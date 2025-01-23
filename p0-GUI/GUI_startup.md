@@ -78,6 +78,8 @@ How long did you spend on this assignment? If you didn't keep an accurate log, a
 > [!IMPORTANT]
 > Your submissions for this project should be located within this project's directory. You'll have a lot of different "code" and "writeup" directories before all is said and done!
 
+Your contribution should be contained in a directory that is your GitHub username, with subfolders for code and writeup. Turn it in with a pull request.
+
 ## Code directory
 A directory titled "code" that contains your program files and makefile (if used), or a ReadMe.md file that gives sufficiently detailed instructions for me to build and execute your code.
 
