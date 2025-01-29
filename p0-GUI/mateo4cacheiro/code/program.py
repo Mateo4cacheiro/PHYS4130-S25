@@ -14,6 +14,6 @@ xpoint = npy.array([0, 6])
 ypoint = npy.array([0, 250])
 
 plt.plot(xpoint, ypoint)
-plt.show
+plt.show()
 
 

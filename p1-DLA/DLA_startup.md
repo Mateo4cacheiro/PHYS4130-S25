@@ -6,28 +6,12 @@ meta:
     term: Spring 2025
 ---
 
-- [Diffusion Limited Aggregation](#diffusion-limited-aggregation)
-  * [Literature](#literature)
-- [The Assignment](#the-assignment)
-  * [Generative AI](#generative-ai)
-  * [The Deadline](#the-deadline)
-  * [Program specification:](#program-specification-)
-  * [The Writeup](#the-writeup)
-    + [Address the following questions in your writeup](#address-the-following-questions-in-your-writeup)
-    + [Attribution](#attribution)
-    + [Timekeeping](#timekeeping)
-    + [Languages, Libraries, Lessons Learned](#languages--libraries--lessons-learned)
-- [The Submission](#the-submission)
-  * [Code directory](#code-directory)
-  * [Writeup directory](#writeup-directory)
-- [Grading](#grading)
-
 # Diffusion Limited Aggregation
 
-While you're working though the GUI task, here's a neat exploration to tackle next.
+On the other side of that GUI task, here's a neat exploration to tackle next.
 We'll come back to random processes later in the semester.
 
-Our first project will use Monte Carlo methods to study a physical system.
+This first full project will use Monte Carlo methods to study a physical system.
 We don't need to worry about the underlying physics at all (for now).
 Imagine that a large number of small solid particles are suspended in a fluid, moving around randomly due to thermal motions ("Brownian motion").
 In the center of the region is a cluster of these particles, all stuck together.
@@ -53,8 +37,14 @@ There has been a *lot* of work since then, but this is already a little overkill
 
 ## The Deadline
 
+### Rough Draft
 > [!IMPORTANT]
-> 12:30pm on Tuesday, Jan 28.
+> 12:30pm on Thursday, Jan 30.
+> You should have code to generate a DLA figure for $N=100$. More is better, but this is a minimum.
+
+### Final Draft
+> [!IMPORTANT]
+> 12:30pm on Tuesday, Feb 4.
 > This is 1 hour before the beginning of class.
 
 ## Program specification:
@@ -117,6 +107,7 @@ A directory titled "writeup" containing
     1. Two noteworthy DLA structures of at least  1e5 particles, and a plot of their fractal dimension as a function of radius
     2. A plot of capacity dimension vs S
  4. Extensions (a.k.a. challenge)
+    - Generate a 30 second long DLA animation for $N=1e6$ particles.
     - How does the behavior change with a 2D triangular lattice, where each point has six neighbors instead of four?
     - How does the behavior change in 3D, where each point has six nearest neighbors instead of four?
 
