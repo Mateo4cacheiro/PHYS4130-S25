@@ -20,7 +20,7 @@ def generate_particle():
 
 # returns coordinates around a point in grid
 def get_coords(grid, x0, y0):
-    grid[0:10:1]
+    grid[0:10, 0:10]
     return x0 + 1, x0 - 1, y0 + 1, y0 - 1
 
 # takes in two coordinates and steps them in a random direction.
