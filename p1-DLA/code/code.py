@@ -21,8 +21,20 @@ def generate_particle():
 
 # returns coordinates around a point in grid
 def get_coords(grid, x0, y0):
-    print(grid[0:10, 0:10])
-    return x0 + 1, x0 - 1, y0 + 1, y0 - 1
+    # print stuff just to see what's happening. Not necessary
+    # -------------------------------------------------------
+    print(grid[x0 - 1:x0 + 2, y0 - 1: y0 + 2])
+
+    print(np.sum(grid[x0-1:x0+2]))
+
+    print(np.sum(grid[y0-1:y0+2]))
+    # -------------------------------------------------------
+
+    if (np.sum(grid[x0-1:x0+2]) > 1 ) or (np.sum(grid[y0-1:y0+2]) > 1):
+        return True
+    else:
+        return False
+
 
 # takes in two coordinates and steps them in a random direction.
 def step(a, b):
@@ -31,4 +43,6 @@ def step(a, b):
     return new_a, new_b
 
 x0, y0 = generate_particle()
-get_coords(grid, x0, y0)
+print(x0, y0)
+x1, y1 = step(x0, y0)
+print(x1,y1)
