@@ -7,12 +7,12 @@ import matplotlib.pyplot as plt
 
 
 # Create grid
-x = 11
-y = 11
+x = 15
 Nmax = 10
-N = 0
-grid = np.zeros((x,y))
-grid[x//2,y//2] = 1
+N = 1
+grid = np.zeros((x,x))
+grid[x//2,x//2] = 1
+i = 0
 
 # generate particle
 def generate_particle():
@@ -42,15 +42,26 @@ def step(a, b):
     new_b = b + np.random.randint(low = -1, high = 1)
     return new_a, new_b
 
-x1, y1 = generate_particle()
 
+while(N < Nmax):
+    x1, y1 = generate_particle()
 
-if(get_coords(grid, x1, y1)):
-    #stick, generate new particle
-    print("yes")
-else:
-    #step particle 
-    print("no")
-    print(x1, y1)
-    x1, y1 = step(x1, y1)
-    print(x1, y1)
+    while(i < 100):
+        get_coords(grid, x1, y1)
+        if(x1 > x - 1 or x1 < 1 or y1 > x - 1 or y1 < 1):
+            grid[x1, y1] = 0
+            break
+        elif(get_coords(grid, x1, y1) == False):
+            N += 1
+            break
+        else:
+            grid[x1, y1] = 0 #zero current position
+            x1, y1 = step(x1, y1) #update position
+            grid[x1, y1] = 1 #update value of new position
+            if(x1 > x - 1 or x1 < 1 or y1 > x - 1 or y1 < 1):
+                grid[x1, y1] = 0
+                break
+            else:
+                continue
+    i += 1
+    print(i)
