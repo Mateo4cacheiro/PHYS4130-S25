@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 # Create grid
 x = 11
 y = 11
+Nmax = 10
+N = 0
 grid = np.zeros((x,y))
 grid[x//2,y//2] = 1
 
@@ -23,14 +25,12 @@ def generate_particle():
 def get_coords(grid, x0, y0):
     # print stuff just to see what's happening. Not necessary
     # -------------------------------------------------------
-    print(grid[x0 - 1:x0 + 2, y0 - 1: y0 + 2])
+    #print(grid[x0 - 1:x0 + 2, y0 - 1: y0 + 2])
 
-    print(np.sum(grid[x0-1:x0+2]))
-
-    print(np.sum(grid[y0-1:y0+2]))
+   # print(np.sum(grid[x0-1:x0+2, y0-1:y0+2]))
     # -------------------------------------------------------
 
-    if (np.sum(grid[x0-1:x0+2]) > 1 ) or (np.sum(grid[y0-1:y0+2]) > 1):
+    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 1 ):
         return True
     else:
         return False
@@ -42,7 +42,15 @@ def step(a, b):
     new_b = b + np.random.randint(low = -1, high = 1)
     return new_a, new_b
 
-x0, y0 = generate_particle()
-print(x0, y0)
-x1, y1 = step(x0, y0)
-print(x1,y1)
+x1, y1 = generate_particle()
+
+
+if(get_coords(grid, x1, y1)):
+    #stick, generate new particle
+    print("yes")
+else:
+    #step particle 
+    print("no")
+    print(x1, y1)
+    x1, y1 = step(x1, y1)
+    print(x1, y1)
