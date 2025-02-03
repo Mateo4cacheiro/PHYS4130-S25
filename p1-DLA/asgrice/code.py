@@ -8,8 +8,8 @@ from PIL import Image
 
 
 # Create grid
-x = 5
-Nmax = 100
+x = 51
+Nmax = 300
 N = 1
 grid = np.zeros((x,x))
 grid[x//2,x//2] = 1
@@ -19,20 +19,20 @@ i = 0
 def generate_particle(x):
     s = np.random.randint(low=0, high=3) #choose integer from 0 to 3 to determine which side to generate particle on
     if(s == 0): #generate particle at top of grid
-        x0 = np.random.randint(low=0,high= x)
-        y0 = x 
+        x0 = np.random.randint(low=0,high= x-1)
+        y0 = x - 1
         return x0, y0
     elif(s == 1): #right side of grid
-        x0 = x - (x // 10)
-        y0 = np.random.randint(low=0,high=x)
+        x0 = x - 1
+        y0 = np.random.randint(low=0,high=x-1)
         return x0, y0
     elif(s == 2): #bottom of grid
-        x0 = np.random.randint(low=0,high= x)
-        y0 = x
+        x0 = np.random.randint(low=0,high=x-1)
+        y0 = x - 1
         return x0, y0
     elif(s == 3): #left side of grid
-        x0 = x
-        y0 = np.random.randint(low=0,high= x)
+        x0 = x - 1
+        y0 = np.random.randint(low=0,high=-1)
         return x0, y0
 
 
