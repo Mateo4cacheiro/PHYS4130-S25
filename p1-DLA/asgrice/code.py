@@ -1,6 +1,6 @@
 # Author: Adam Grice
 # Project: P1-DLA
-# Date: 01-29-2025
+# Date: 02-03-2025
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,19 +8,35 @@ from PIL import Image
 
 
 # Create grid
-x = 15
-Nmax = 15
+x = 5
+Nmax = 100
 N = 1
 grid = np.zeros((x,x))
 grid[x//2,x//2] = 1
 i = 0
 
-# generate particle
-def generate_particle():
-    x0 = np.random.randint(low=0, high=10)
-    y0 = np.random.randint(low=0,high=10)
-    grid[x0, y0] = 1
-    return x0, y0
+
+def generate_particle(x):
+    s = np.random.randint(low=0, high=3) #choose integer from 0 to 3 to determine which side to generate particle on
+    if(s == 0): #generate particle at top of grid
+        x0 = np.random.randint(low=0,high= x)
+        y0 = x 
+        return x0, y0
+    elif(s == 1): #right side of grid
+        x0 = x - (x // 10)
+        y0 = np.random.randint(low=0,high=x)
+        return x0, y0
+    elif(s == 2): #bottom of grid
+        x0 = np.random.randint(low=0,high= x)
+        y0 = x
+        return x0, y0
+    elif(s == 3): #left side of grid
+        x0 = x
+        y0 = np.random.randint(low=0,high= x)
+        return x0, y0
+
+
+    
 
 # returns coordinates around a point in grid
 def get_coords(grid, x0, y0):
@@ -45,7 +61,7 @@ def step(a, b):
 
 
 while(N < Nmax):
-    x1, y1 = generate_particle()
+    x1, y1 = generate_particle(x)
     #print("new")
 
     while(i < 1000):
