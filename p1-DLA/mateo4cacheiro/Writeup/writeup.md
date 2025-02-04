@@ -1,90 +1,41 @@
+
 ---
 meta:
-    author: Austin Reid
+    author: Mateo Cacheiro
     topic: Diffusion Limited Aggregation Project
     course: TN Tech PHYS4130
     term: Spring 2025
 ---
-
-# Diffusion Limited Aggregation
-
-On the other side of that GUI task, here's a neat exploration to tackle next.
-We'll come back to random processes later in the semester.
-
-This first full project will use Monte Carlo methods to study a physical system.
-We don't need to worry about the underlying physics at all (for now).
-Imagine that a large number of small solid particles are suspended in a fluid, moving around randomly due to thermal motions ("Brownian motion").
-In the center of the region is a cluster of these particles, all stuck together.
-Whenever a new particle touches the cluster, it sticks to it.
-As that cluster grows, how can we quantify its shape?[^3]
-
-## Literature
-
-It all started with 
-[Diffusion-Limited Aggregation, a Kinetic Critical Phenomenon (1981 PRL)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.47.1400)
-
-There has been a *lot* of work since then, but this is already a little overkill.
-
-# The Assignment
-
-## Generative AI
-
-> [!IMPORTANT]
-> With full attribution and logged prompts, you may use AI on the programming task.
-
-> [!WARNING]
-> You may _not_ use generative AI on the writeup.
-
-## The Deadline
-
-### Rough Draft
-> [!IMPORTANT]
-> 12:30pm on Thursday, Jan 30.
-> You should have code to generate a DLA figure for $N=100$. More is better, but this is a minimum.
-
-### Final Draft
-> [!IMPORTANT]
-> 12:30pm on Tuesday, Feb 4.
-> This is 1 hour before the beginning of class.
-
-## Program specification:
-
- - You program should model aggregation of  **N**: _a specified number_ of randomly diffusing particles
- - Start with a seed particle at the origin, and introduce particles one-by-one
- - Move that particle randomly on the lattice (one step at at time) until it is adjacent to the seed or a previous particle that is stuck to the seed
- - Your program needs **S**: a "stickyness" factor (0,1] that determines whether the particle sticks to the aggregate at that point
- - If the particle sticks, introduce a new particle. If it does not stick, continue its diffusive motion until it does
-
-> [!NOTE]
-> Convergence, stability, and error will feature heavily in this course.
->  - Will the algorithm described above always terminate?
->  - What happens if the particle diffuses away from the cluster?
-
-> [!NOTE]
-> Your program should be able to generate images of the aggregate at predetermined intervals.
-> You can use this to generate animations without having to have tens of thousands of frames.
-
-> [!TIP]
-> This algorithm should not be parallelized!
 
 
 ## The Writeup
 
 ### Address the following questions in your writeup
  1. What is the difference between capacity dimension[^1] and topological dimension?
+    The Capacity Dimension is a value to represent how complicated a "self-similar" figure is. The fractile deminsion can tell us what how many points are in a set/how large a set is. [1]. From what I can find it is essentially a ratio between the log of the number of equal divisions of a particle and log of the factor need to return those divisions to their original size. While this makes a little bit of sense to me for things like a canton line, I have no idea how this can be applied to DLA simmulations. I think the capacity dimension is a dimension used for sets within a metric space but I don't really know what that means either. I have never taken a class or learned about sets or any spaces other than vector spaces so this is well beyond my abilites to fully understand.
+    Using the sources I can find/have access to I can't seem to find a definition for a topological dimension in non "Mathemetian Language". I have tried interpreting all the set notation I have encountered but I haven't been successful at understanding anything. topological dimension seems to deal with how points are related to eachother in non spatial ways while the fractal dimension is a measure of how complex the points are in relation to eachother geometrically. 
+    
  2. Can you replicate Witten and Sander's published capacity dimension?
- 3. How does the capacity dimension change as a function of *S*?
+    I think that for the most part the program I made creates the same type of structure that they did. Unforuntatly I don't really understand what is going on in EQ3 and beyond but overall they just seem to be finding differnt coefficents that charatarize the structure that is made. I also don't understand why determining values like the Hausdorff dimension is even a valueble thing to konw. 
+ 4. How does the capacity dimension change as a function of *S*?
+    In concept, the Capacity dimension should increase. the structure should become more dense and complex. However, I can't seem to notice this with my current program. 
 
 ### Attribution
-What resources did you use on this assignment? People, websites, books, etc.
+[1] https://math.bu.edu/DYSYS/chaos-game/node6.html
+[2] https://en.wikipedia.org/wiki/Topological_space
+[3] https://u.cs.biu.ac.il/~megereli/final_topology.pdf
+[4] https://en.wikipedia.org/wiki/Metric_space
+[5] https://www.quora.com/What-exactly-is-topological-dimension-and-how-does-it-relate-to-fractal-dimension
+[6] https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.47.1400
 
 ### Timekeeping
-How long did you spend on this assignment? If you didn't keep an accurate log, an estimate is fine.
+I have spent between 25 and 30 hours on this assignment since Jan 28.
 
 ### Languages, Libraries, Lessons Learned
  1. What language did you use for your submission? Is it the same one you started using? If not, why'd you change?
+    I used Python for this program. Its the language I used from the start and I used it because it seems to be the most approachable. While I know a limited amount of C++, python seems to make a lot of things much easier. Overall, the support for python I found on the internet was very helpful so it encouraged me to continue working with the language. 
  2. What libraries did you use in your submission? Were any of them remarkable? Great to use, super annoying to use, etc?
-
+    I used Numpy, Random, Matplotlib, math, and PIL. I wouldn't call any of them remarkable though. If anything Random made my life terrible. I used a command on the internet from one of the links you provided me via email and found a way to determine that the randint() function was extremly slow. 
 > [!NOTE]
 > This section probably shouldn't more than a few sentences long. Record what you learned and move on!
 
@@ -104,7 +55,7 @@ A directory titled "writeup" containing
  1. your writeup file: a well-structured markdown file OR a LaTeX document (and its resulting PDF) OR a well-structured Jupyter notebook
  2. Animation(s) of your DLA structures as they grow[^2]
  3. Figures (static, PNG or PDF) of the following
-    1. Two noteworthy DLA structures of at least  5e3 particles, and a plot of their fractal dimension as a function of radius
+    1. Two noteworthy DLA structures of at least  1e5 particles, and a plot of their fractal dimension as a function of radius
     2. A plot of capacity dimension vs S
  4. Extensions (a.k.a. challenge)
     - Generate a 30 second long DLA animation for $N=1e6$ particles.
@@ -137,3 +88,4 @@ A directory titled "writeup" containing
 [^1]: You'll also see this called the fractal or Hausdorff dimension
 [^2]: These can be animated GIF files, HTML5 videos, mp4 files, or javascript animations
 [^3]: This assignment draws heavily on [Daniel V. Schroeder's DLA module](https://physics.weber.edu/schroeder/javacourse/DLA.pdf)
+
