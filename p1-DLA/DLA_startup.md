@@ -104,7 +104,7 @@ A directory titled "writeup" containing
  1. your writeup file: a well-structured markdown file OR a LaTeX document (and its resulting PDF) OR a well-structured Jupyter notebook
  2. Animation(s) of your DLA structures as they grow[^2]
  3. Figures (static, PNG or PDF) of the following
-    1. Two noteworthy DLA structures of at least  1e5 particles, and a plot of their fractal dimension as a function of radius
+    1. Two noteworthy DLA structures of at least  5e3 particles, and a plot of their fractal dimension as a function of radius
     2. A plot of capacity dimension vs S
  4. Extensions (a.k.a. challenge)
     - Generate a 30 second long DLA animation for $N=1e6$ particles.
