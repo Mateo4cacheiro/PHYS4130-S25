@@ -12,21 +12,30 @@ meta:
 
 ### Address the following questions in your writeup
  1. What is the difference between capacity dimension[^1] and topological dimension?
+    The Capacity Dimension is a value to represent how complicated a "self-similar" figure is. The fractile deminsion can tell us what how many points are in a set/how large a set is. [1]. From what I can find it is essentially a ratio between the log of the number of equal divisions of a particle and log of the factor need to return those divisions to their original size. While this makes a little bit of sense to me for things like a canton line, I have no idea how this can be applied to DLA simmulations. I think the capacity dimension is a dimension used for sets within a metric space but I don't really know what that means either. I have never taken a class or learned about sets or any spaces other than vector spaces so this is well beyond my abilites to fully understand.
+    Using the sources I can find/have access to I can't seem to find a definition for a topological dimension in non "Mathemetian Language". I have tried interpreting all the set notation I have encountered but I haven't been successful at understanding anything. topological dimension seems to deal with how points are related to eachother in non spatial ways while the fractal dimension is a measure of how complex the points are in relation to eachother geometrically. 
     
-    
- 3. Can you replicate Witten and Sander's published capacity dimension?
+ 2. Can you replicate Witten and Sander's published capacity dimension?
+    I think that for the most part the program I made creates the same type of structure that they did. Unforuntatly I don't really understand what is going on in EQ3 and beyond but overall they just seem to be finding differnt coefficents that charatarize the structure that is made. I also don't understand why determining values like the Hausdorff dimension is even a valueble thing to konw. 
  4. How does the capacity dimension change as a function of *S*?
+    In concept, the Capacity dimension should increase. the structure should become more dense and complex. However, I can't seem to notice this with my current program. 
 
 ### Attribution
-What resources did you use on this assignment? People, websites, books, etc.
+[1] https://math.bu.edu/DYSYS/chaos-game/node6.html
+[2] https://en.wikipedia.org/wiki/Topological_space
+[3] https://u.cs.biu.ac.il/~megereli/final_topology.pdf
+[4] https://en.wikipedia.org/wiki/Metric_space
+[5] https://www.quora.com/What-exactly-is-topological-dimension-and-how-does-it-relate-to-fractal-dimension
+[6] https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.47.1400
 
 ### Timekeeping
-How long did you spend on this assignment? If you didn't keep an accurate log, an estimate is fine.
+I have spent between 25 and 30 hours on this assignment since Jan 28.
 
 ### Languages, Libraries, Lessons Learned
  1. What language did you use for your submission? Is it the same one you started using? If not, why'd you change?
+    I used Python for this program. Its the language I used from the start and I used it because it seems to be the most approachable. While I know a limited amount of C++, python seems to make a lot of things much easier. Overall, the support for python I found on the internet was very helpful so it encouraged me to continue working with the language. 
  2. What libraries did you use in your submission? Were any of them remarkable? Great to use, super annoying to use, etc?
-
+    I used Numpy, Random, Matplotlib, math, and PIL. I wouldn't call any of them remarkable though. If anything Random made my life terrible. I used a command on the internet from one of the links you provided me via email and found a way to determine that the randint() function was extremly slow. 
 > [!NOTE]
 > This section probably shouldn't more than a few sentences long. Record what you learned and move on!
 
