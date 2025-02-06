@@ -1,17 +1,16 @@
 # Author: Adam Grice
 # Project: P1-DLA
-# Date: 02-05-2025
+# Date: 02-06-2025
 
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 import time
 
-
 # Create grid
 x = 1000
 spawn_rad = 10
-Nmax = 10000
+Nmax = 1000
 N = 1
 grid = np.zeros((x,x))
 grid[x//2,x//2] = 1
@@ -25,6 +24,7 @@ def generate_on_circle(spawn_rad, x0, y0):
     yval = round(spawn_rad * np.sin(angle)) + y0
 
     return xval, yval
+
 
 def generate_particle(spawn_rad):
     s = np.random.randint(low=0, high=4) #choose integer from 0 to 3 to determine which side to generate particle on
@@ -49,6 +49,7 @@ def generate_particle(spawn_rad):
     
 
 # determines whether there is a nonzero point in vicinity of another nonzero point
+
 def get_coords(grid, x0, y0):
     if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0 ):
         return True
@@ -57,6 +58,7 @@ def get_coords(grid, x0, y0):
 
 
 # takes in two coordinates and steps them in a random direction.
+
 def step(a, b):
     new_a = a + np.random.randint(low = -1, high = 2)
     new_b = b + np.random.randint(low = -1, high = 2)
