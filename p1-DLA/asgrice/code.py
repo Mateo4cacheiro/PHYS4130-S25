@@ -10,6 +10,7 @@ import time
 # Create grid
 x = 1000
 spawn_rad = 10
+kill_rad = spawn_rad + 6
 Nmax = 1000
 N = 1
 grid = np.zeros((x,x))
@@ -51,7 +52,16 @@ def generate_particle(spawn_rad):
 # determines whether there is a nonzero point in vicinity of another nonzero point
 
 def get_coords(grid, x0, y0):
-    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0 ):
+    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0):
+        return True
+    else:
+        return False
+
+
+# attempting to implement stickiness factor
+def get_coords2(grid, x0, y0):
+    S = np.random.rand()
+    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0 and S > 0.5):
         return True
     else:
         return False
@@ -100,7 +110,7 @@ def step(a, b):
 #    print(f'{x2},{y2}')
 
 
-kill_rad = spawn_rad+6
+
 while(N < Nmax):
     stuck = False
     x1, y1 = generate_on_circle(spawn_rad, x//2, x//2)
@@ -109,7 +119,7 @@ while(N < Nmax):
         dist = np.sqrt(((x//2) - x1)**2 + ((x//2) - y1)**2)
         if(dist > kill_rad):
             x1, y1 = generate_on_circle(spawn_rad, x//2, x//2)
-        stuck = get_coords(grid,x1,y1)
+        stuck = get_coords2(grid,x1,y1)
     if stuck:
         grid[x1, y1] = 1
         N+=1
@@ -117,7 +127,8 @@ while(N < Nmax):
         if(rad >= spawn_rad):
             spawn_rad = rad + 10
             kill_rad = spawn_rad + 6
-
+cap_dim = np.log(N)/np.log(rad)
+print(cap_dim)
 plt.imshow(grid)
 plt.show()
 # plt.draw()
