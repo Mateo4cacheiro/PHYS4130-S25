@@ -14,6 +14,19 @@ Currently this simulation can create a 50,000 particle aggregate. Larger aggrega
 
 A slight upward trend is visible. Normally it would be expected that a slight downward trend would appear, but the way in which stickiness factor is implemented in this project inverts the relationship between dimension and stickiness. A sample aggregate with 50,000 particles is shown below: 
 
-![](
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p1-DLA/asgrice/N%3D50000_D%3D1.488_S%3D0.5.pdf)
+
+
+At smaller N the images produced more closely resemble those published by Witten and Sander, and the values calculated for capacity dimension are also closer to 1.7.
+
 ## Problems
-Currently there are several areas where this simulation can be improved. The first is to determine and update the aggregate's center of mass as opposed to having the radius be relative to the center of the grid. This would help prevent the long branches which appear at higher particle counts. Another issue is that the 
+Currently there are several areas where this simulation can be improved. The first is to determine and update the aggregate's center of mass as opposed to having the radius be relative to the center of the grid. This would help prevent the long branches which appear at higher particle counts. Another issue is that when checking each new particle's proximity to the aggregate, there are no measures implemented to keep new particles from stepping into or through the aggregate. 
+
+## Attribution
+The major breakthroughs on this project were made with a good deal of help from Dr. Reid. Mateo Cacheiro also had several helpful suggestions. Online resources used include wikipedia.org, geeksforgeeks.org, numpy.org, numba.pydata.org, stackoverflow.com, and matplotlib.org.
+
+## Timekeeping
+Approximately 20-30 hours have been spent working on this project.
+
+## Languages, Libraries, Lessons Learned
+This project was written in python using numpy, matplotlib, and numba, all of which were useful and fairly simple to implement.
