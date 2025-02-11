@@ -1,7 +1,6 @@
-# testing
-
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
+from PIL import Image
 import random
 
 def create(sidelength):
@@ -47,7 +46,7 @@ def direction(x,y): # function to randomly generate where the particle will go
 	return newx, newy
 
 def move(tree,x,y,fax):
-	fax = False
+	fax = False # flag to check if it needs to move or not
 	newx, newy = direction(x,y)
 	print("BEFORE IF")
 	if 0 <= newx < tree.shape[0] and 0 <= newy < tree.shape[1]: # keeps in-bounds
@@ -67,13 +66,28 @@ def move(tree,x,y,fax):
 
 # ---------------- main function below ------------------
 
-num = 1
-sidelength = 7
-tree = create(sidelength)
+# num = 10000
+#sidelength = 5
+#tree = create(sidelength)
 
-for i in range(1,num+1):
-	fax = False
-	tree, x, y = spawn(tree,sidelength)
-	while fax == False: tree,x,y,fax = move(tree,x,y,fax)
+#for n in range(1,num+1):
+#	print("particle",n,"entering the tree")
+#	fax = False
+#	tree, x, y = spawn(tree,sidelength)
+#	while fax == False: tree,x,y,fax = move(tree,x,y,fax)
 
-print(tree[0:sidelength,0:sidelength])
+#print(tree[0:sidelength,0:sidelength])
+
+#plt.matshow(tree,cmap='plasma')
+#plt.show(block=False)
+
+#print(np.sum(tree[0:sidelength,0:sidelength]))
+
+# ---------------- main function #2 below ----------------
+
+num, size, n = 1000, 25, 0
+print(num,size,n)
+#size = 25
+shrub = create(size)
+
+#while np.sum(shrub[0:size,0:size]) < n
