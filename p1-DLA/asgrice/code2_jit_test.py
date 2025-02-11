@@ -1,21 +1,21 @@
 # Author: Adam Grice
 # Project: P1-DLA
-# Date: 02-06-2025
+# Date: 02-07-2025
 
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 import time
 import numba as nb
-import scipy as sc
+from scipy import ndimage
 
 # Create grid
-x = 1000
+x = 1800
 spawn_rad = 10
 kill_rad = spawn_rad + 6
-Nmax = 10000
+Nmax = 3000
 N = 1
-S = 0.3
+S = 0.6
 grid = np.zeros((x,x))
 grid[x//2,x//2] = 1
 
@@ -90,15 +90,53 @@ def big_fcn(x, spawn_rad, kill_rad, Nmax, N, grid, S):
         if stuck:
             grid[x1, y1] = 1
             N+=1
+            if(N%500 == 0):
+                print(N)
+            # x_cm, y_cm = np.round(ndimage.center_of_mass(grid))
             rad = np.sqrt(((x/2) - x1)**2 + ((x/2) - y1)**2)
             if(rad >= spawn_rad):
                 spawn_rad = rad + 10
                 kill_rad = spawn_rad + 20     
-    cap_dim = np.log(N)/np.log(rad)
-    print(cap_dim)
+    cap_dim = np.log(N)/np.log(spawn_rad - 10)
+    # print(cap_dim)
+    return cap_dim
     
-big_fcn(x, spawn_rad, kill_rad, Nmax, N, grid, S)
+D = big_fcn(x, spawn_rad, kill_rad, Nmax, N, grid, S)
 
 
+#---------------------------------------------
+# ripped code for plots from Notes+tips.md
+#---------------------------------------------
+
+xslice = np.where(np.sum(grid,axis=0))[0]
+yslice = np.where(np.sum(grid,axis=1))[0]
+
+# calculate the size of the cropped aggregate
+whitespace = 2  # don't crop exactly to the edges of the DLA
+ypixels = yslice[-1]-yslice[0]+2*whitespace
+xpixels = xslice[-1]-xslice[0]+2*whitespace
+
+# approximate the size of the generated figure. This is more than good enough almost always.
+figure_ppi = 15  # ppi = pixels per inch
+figw = xpixels/figure_ppi
+figh = ypixels/figure_ppi+0.375  # add extra space for the figure title
+
+# Create a figure/axis object (this makes systematic figure generation much easier)
+# NB you should specify the length and width of the figure (in inches) here.
+fig, ax = plt.subplots(figsize=(figw, figh))
+
+# slice the "crystal" object on the edges identified with the "where" command.
+# NB: you can break a python function call over multiple lines to make it easier to read
+_ = ax.imshow(grid[yslice[0]-whitespace:yslice[-1]+whitespace+1,
+                      xslice[0]-whitespace:xslice[-1]+whitespace+1],
+               origin='upper',
+               interpolation='nearest',
+               aspect='equal')
+
+# these optional parameters (origin, interpolation, aspect) are automatically set by matshow,
+# but matshow also moves the axes to the top of the 
+_ = ax.axis('off')
+_ = ax.set_title(f'N={Nmax}, D={round(D, 3)}', fontsize=12)  # note the use of an f-string in this command
+fig.savefig(f'demo_figure_N{Nmax}.png',bbox_inches='tight',dpi=150)
 plt.imshow(grid)
 plt.show()

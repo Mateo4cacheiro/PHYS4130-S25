@@ -1,6 +1,6 @@
 # Author: Adam Grice
 # Project: P1-DLA
-# Date: 02-06-2025
+# Date: 02-07-2025
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,7 +15,7 @@ Nmax = 1000
 N = 1
 grid = np.zeros((x,x))
 grid[x//2,x//2] = 1
-i = 0
+S = 0.5
 
 
 def generate_on_circle(spawn_rad, x0, y0):
@@ -59,9 +59,9 @@ def get_coords(grid, x0, y0):
 
 
 # attempting to implement stickiness factor
-def get_coords2(grid, x0, y0):
-    S = np.random.rand()
-    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0 and S > 0.5):
+def get_coords2(grid, x0, y0, S):
+    stick = np.random.rand()
+    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0 and stick > S):
         return True
     else:
         return False
@@ -119,7 +119,7 @@ while(N < Nmax):
         dist = np.sqrt(((x//2) - x1)**2 + ((x//2) - y1)**2)
         if(dist > kill_rad):
             x1, y1 = generate_on_circle(spawn_rad, x//2, x//2)
-        stuck = get_coords2(grid,x1,y1)
+        stuck = get_coords2(grid,x1,y1, S)
     if stuck:
         grid[x1, y1] = 1
         N+=1
