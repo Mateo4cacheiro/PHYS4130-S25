@@ -1,4 +1,4 @@
-#******************************************************************************************
+# ******************************************************************************************
 #	 Title:  	program.py
 # 	 Date:		2/3/2025   
 #    Class:     PHYS 4130
@@ -7,64 +7,35 @@
 #******************************************************************************************
 
 
-
-
-
-#import libraries
+#import function file
 import Functions
 import numpy as np
-import random as ran
-import math
 import matplotlib.pyplot as plt
-from PIL import Image
+
 
 #Set Important Variables
-ArraySize=500                                                         #Matrix Size
-Size = 5000                                                              #Total Particles                                                                    
-MaxArm = 0                                                              #Set longest arm length to zero
-CreationRadius = 5                                                     #Creation radius will start at 10 units
-DeathRadius= CreationRadius + 1                                     #Death Radius will start 20 units larger than creation ring
-rng = np.random.default_rng()
+ArraySize= 10000                                                            #Matrix Size
+Size = 200000                                                               #Total Particles                                                                    
+S=1                                                                         #Set Stickiness parameter (0.01,1)
+MaxArm = 0                                                                  #Set longest arm length to zero
+CreationRadius = 100                                                        #Creation radius will start at 100 units
+DeathRadius= CreationRadius + 50                                            #Death Radius will start 50 units larger than creation ring    
+
+#Call a function to create the array that will contain the Structure. Stars with a particle at (XCenter,YCenter)
+crystal,XCenter,YCenter,M,N=Functions.CreateArray(ArraySize)
+
+#Once the Array is made, Build the struture. 
+crystal,MaxArm=Functions.MainFunction(crystal,Size,MaxArm,CreationRadius,DeathRadius,XCenter,YCenter,M,N,S)
+
+#After struture is created within the array, calculate the fractal dimension.
+Dimension=np.log(Size)/np.log(MaxArm)
+
+#output important values
+print(MaxArm, Size)
+print("Dimension: ", Dimension)
+
+#Create figure of the structure
+Functions.CreateImage(crystal,Size,S,MaxArm,Dimension)
 
 
-#Create a array to represent a 2D space with a stationary particle at the center
-Functions.CreateArray(ArraySize)                                        
 
-
-#Loop until the structure has "Size" number of particles
-while Functions.NotFull(Size) == True:      
-
-    #Creates a new particle 
-    Functions.CreateParticle(CreationRadius)
-    Distance=CreationRadius
-    Attached = False
-
-    #Move particle until it attaches or goes out of bounds
-    while not Attached and Distance < DeathRadius**2:
-
-        #Determine if particle is attatched 
-        Attached = Functions.CheckAttached()
-
-        #if particle is not attached, move particle.
-        if Attached == False:
-            #roll rand walk direction
-            moveDir = rng.integers(0,4)            #move particle
-            Functions.move(moveDir)
-            Distance = Functions.dis() 
-
-        #if particle is attached properly attach it    
-        else:
-            Functions.increment()
-            #Adjust MaxArm length and creation radius
-            ArmLength = Distance
-            if ArmLength > MaxArm**2:
-                MaxArm = math.sqrt(ArmLength)
-                CreationRadius = 5 + MaxArm
-                DeathRadius = 1 + CreationRadius 
-                
-
-    if Distance >= DeathRadius**2:
-        Functions.des()
-
-#Functions.ShowStructure()
-#plt.savefig("")
