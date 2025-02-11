@@ -8,5 +8,12 @@ This DLA simulation works by creating a 2-D array populated with zeros, except f
 
 ## Results
 Currently this simulation can create a 50,000 particle aggregate. Larger aggregates can be done, but have not been due to long runtimes. After 10 runs with 20,000 particles and the stickiness factor S ranging from 0.1 to 0.99, the average capacity dimension was determined to be 1.807, larger than Witten and Sander's published value of 1.7. A plot of capacity dimension vs. stickiness factor is shown below: 
-![]('/Users/adamgrice/Documents/GitHub/PHYS4130-S25/p1-DLA/asgrice/N=20000/D_vs_S.png')
+
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p1-DLA/asgrice/N%3D20000/D_vs_S.png)
+
+
+A slight upward trend is visible. Normally it would be expected that a slight downward trend would appear, but the way in which stickiness factor is implemented in this project inverts the relationship between dimension and stickiness. A sample aggregate with 50,000 particles is shown below: 
+
+![](
 ## Problems
+Currently there are several areas where this simulation can be improved. The first is to determine and update the aggregate's center of mass as opposed to having the radius be relative to the center of the grid. This would help prevent the long branches which appear at higher particle counts. Another issue is that the 
