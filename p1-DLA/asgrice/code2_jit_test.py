@@ -10,12 +10,12 @@ import numba as nb
 from scipy import ndimage
 
 # Create grid
-x = 1800
+x = 10000
 spawn_rad = 10
 kill_rad = spawn_rad + 6
-Nmax = 3000
+Nmax = 50000
 N = 1
-S = 0.6
+S = 0.5
 grid = np.zeros((x,x))
 grid[x//2,x//2] = 1
 
@@ -62,7 +62,7 @@ def get_coords(grid, x0, y0):
 @nb.jit
 def get_coords2(grid, x0, y0, S):
     stick = np.random.rand()
-    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0 and stick > S):
+    if (np.sum(grid[x0-1:x0+2, y0-1:y0+2]) > 0 and stick < S):
         return True
     else:
         return False
@@ -88,7 +88,7 @@ def big_fcn(x, spawn_rad, kill_rad, Nmax, N, grid, S):
                 x1, y1 = generate_on_circle(spawn_rad, x//2, x//2)
             stuck = get_coords2(grid, x1, y1, S)
         if stuck:
-            grid[x1, y1] = 1
+            grid[x1, y1] = 1 + (N/Nmax)
             N+=1
             if(N%500 == 0):
                 print(N)
