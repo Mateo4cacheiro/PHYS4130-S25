@@ -64,19 +64,19 @@ but it basically looks the same and I felt more comfortable making it
 there.
 
 <figure>
-  <img src=figures/Figure_1>
+  <img src=figures/Figure_1.png>
     <figcaption>Aggregate of N=10000 with S=1</figcaption>
 </figure>
 <p>&nbsp;</p> 
 
 <figure>
-  <img src=figures/Figure_2>
+  <img src=figures/Figure_2.png>
     <figcaption>Aggregate of N=10000 with S=0.5</figcaption>
 </figure>
 <p>&nbsp;</p> 
 
 <figure>
-  <img src=figures/Figure_3>
+  <img src=figures/Figure_3.png>
     <figcaption>Chart of capacity dimension vs. stickiness</figcaption>
 </figure>
 <p>&nbsp;</p> 
@@ -90,7 +90,7 @@ simulation was much faster but broke the capacity dimension, so I had
 to scrap the idea.
 
 <figure>
-  <img src=figures/Figure_4>
+  <img src=figures/Figure_4.png>
     <figcaption>Aggregate of N=50000 with 20 quadrants</figcaption>
 </figure>
 <p>&nbsp;</p> 
