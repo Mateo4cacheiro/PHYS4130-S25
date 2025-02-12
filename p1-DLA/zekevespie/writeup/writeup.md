@@ -108,6 +108,6 @@ in it's standard form, ignoring the quadrants.
       Move_N--If the particle is adjacent to another-->Stick_Test
       Move_N--If the particle is not adjacent to another-->Move_N
       Stick_Test--If it sticks to the aggregate-->Increment_N
-      Sitck_Test--If it does not stick-->Move_N
+      Stick_Test--If it does not stick-->Move_N
       Increment_N-->Spawn
 ```
