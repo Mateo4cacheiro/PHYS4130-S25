@@ -32,22 +32,22 @@ You're ready for a little more sophistication.
 
 Consider the following integral:
 
-$$
+```math
 I = \int_0^2 \mathrm{d}x\, \sin^2\left(\sqrt{100x}\right)
-$$
+```
 
 It's easy to implement a trapezoidal rule approximation, and with a high enough $N$, you can generate an arbitrarily accurate solution.
 It's wasteful to just crank up $N$ to some huge value though.
 Instead, it's helpful to consider "how good" the approximation is at any particular point.
 
 > [!IMPORTANT]
-> Calculate the integral to an approximate accuracy of $\epsilon=10^{-6}$, which means it's correct for 6 digits after the decimal point.
+> Calculate the integral to an approximate accuracy of $`\epsilon=10^{-6}`$, which means it's correct for 6 digits after the decimal point.
 
 Start with one single integration slice and work up from there to two, four, eight, and so forth.
-For each value of the number of slices $N$: your program should print out the number of slices, its estimate of the integral, and its estimate of the error on the integral.
+For each value of the number of slices $`N`$: your program should print out the number of slices, its estimate of the integral, and its estimate of the error on the integral.
 
 > [!TIP]
-> The value is $\approx 0.45583$
+> The value is $`\approx 0.45583`$
 
 ### Gaussian quadrature
 
@@ -59,59 +59,61 @@ Simpson's rule reduces error by cleverly weighting the contributions of points t
 Without a huge amount of justification, it seems reasonable that you can get a better approximation by adjusting your sample points themselves.
 
 #### Standardized limits of integration
-It turns out it's a bit easier to only consider integrals in the interval $[-1,1]$ 
+It turns out it's a bit easier to only consider integrals in the interval $`[-1,1]`$ 
 
 > [!NOTE]
 > It's possible to extend these results to other intervals, but that takes us further from *neat* and much closer to *tedious*.
-> The intervals don't even have to be finite! $[0,\infty)$, for example, is manageable.)
+> The intervals don't even have to be finite! $`[0,\infty)`$, for example, is manageable.)
 
 You generally won't be lucky enough to attempt an integral over this interval.
-Instead, you're more likely to see an integral from $[a,b]$.
-You only need to map $[a,b]$ to $[-1,1]$, a simple task for the right u-substitution.
+Instead, you're more likely to see an integral from $`[a,b]`$.
+You only need to map $`[a,b]`$ to $`[-1,1]`$, a simple task for the right u-substitution.
 Let
 
-$$
+```math
 u=\frac{2x-a-b}{b-a}.
-$$
+```
 
 > [!IMPORTANT]
->  1. Verify that u(x) maps $[a,b]$ to $[-1,1]$.
->  2. Calculate $\mathrm{d}u$ and make sure you remember to use it in your program!
+>  1. Verify that u(x) maps $`[a,b]`$ to $`[-1,1]`$.
+>  2. Calculate $`\mathrm{d}u`$ and make sure you remember to use it in your program!
 
 #### Legendre polynomials
 
 You've seen legendre polynomials in your Quantum Mechanics class.
 They're "orthogonal polynomials", but a brief refresher will be helpful.
 
-Make a figure with a 4x4 grid showing the following subplots: $P_i$, $P_j$, and $P_i\cdot P_j$
+Make a figure with a 4x4 grid showing the following subplots: $`P_i`$, $`P_j`$, and $`P_i\cdot P_j`$
 
-|       | $P_1$                  |   $P_2$                   |  $P_3$                    |  $P_4$  |
+|       | $`P_1`$                  |   $`P_2`$                   |  $`P_3`$                    |  $`P_4`$  |
 | :---: | :----:                 | :----:                 | :---:                  | :---:                  |
-| $P_1$    | $P_1$, $P_1$, $P_1\cdot P_1$ | $P_1$, $P_2$, $P_1\cdot P_2$ | $P_1$, $P_3$, $P_1\cdot P_3$ | $P_1$, $P_4$, $P_1\cdot P_4$ |
-| $P_2$    | $P_2$, $P_1$, $P_2\cdot P_1$ | $P_2$, $P_2$, $P_2\cdot P_2$ | $P_2$, $P_3$, $P_2\cdot P_3$ | $P_2$, $P_4$, $P_2\cdot P_4$ |
-| $P_3$    | $P_3$, $P_1$, $P_3\cdot P_1$ | $P_3$, $P_2$, $P_3\cdot P_2$ | $P_3$, $P_3$, $P_3\cdot P_3$ | $P_3$, $P_4$, $P_3\cdot P_4$ |
-| $P_4$    | $P_4$, $P_1$, $P_4\cdot P_1$ | $P_4$, $P_2$, $P_4\cdot P_2$ | $P_4$, $P_3$, $P_4\cdot P_3$ | $P_4$, $P_4$, $P_4\cdot P_4$ |
+| $`P_1`$    | $`P_1`$, $`P_1`$, $`P_1\cdot P_1`$ | $`P_1`$, $`P_2`$, $`P_1\cdot P_2`$ | $`P_1`$, $`P_3`$, $`P_1\cdot P_3`$ | $`P_1`$, $`P_4`$, $`P_1\cdot P_4`$ |
+| $`P_2`$    | $`P_2`$, $`P_1`$, $`P_2\cdot P_1`$ | $`P_2`$, $`P_2`$, $`P_2\cdot P_2`$ | $`P_2`$, $`P_3`$, $`P_2\cdot P_3`$ | $`P_2`$, $`P_4`$, $`P_2\cdot P_4`$ |
+| $`P_3`$    | $`P_3`$, $`P_1`$, $`P_3\cdot P_1`$ | $`P_3`$, $`P_2`$, $`P_3\cdot P_2`$ | $`P_3`$, $`P_3`$, $`P_3\cdot P_3`$ | $`P_3`$, $`P_4`$, $`P_3\cdot P_4`$ |
+| $`P_4`$    | $`P_4`$, $`P_1`$, $`P_4\cdot P_1`$ | $`P_4`$, $`P_2`$, $`P_4\cdot P_2`$ | $`P_4`$, $`P_3`$, $`P_4\cdot P_3`$ | $`P_4`$, $`P_4`$, $`P_4\cdot P_4`$ |
 
-Look at the $P_i\cdot P_j$ plots, and convince yourself that if $i=j$, $\int_{-1}^{1} P_i\cdot P_j \mathrm{d}x=\delta_{i,j}$.
-The Kroneker delta function $\delta_{i,j}$ is 1 when $i=j$ and 0 when $i\neq j$.
+Look at the $`P_i\cdot P_j`$ plots, and convince yourself that if $`i=j`$, $`\int_{-1}^{1} P_i\cdot P_j \mathrm{d}x=\delta_{i,j}`$.
+The Kroneker delta function $`\delta_{i,j}`$ is 1 when $`i=j`$ and 0 when $`i\neq j`$.
 
 For deep numerical analysis reasons that you're welcome to read up on (and are encouraged to address in your report if you like), the optimal points for an $N$ order Gaussian quadrature are the zeros of that order of Legendre polynomial.
 You won't need to define your own Legendre polynomial generating function: a standard numerical library implementation is fine.
 
 #### The algorithm
 
-$$
+```math
 \int_{-1}^{1} \mathrm{d}x\, f(x) \approx \sum_{i=1}^N c_{N,i} f\left(x_{N,i}\right)
-$$
+```
 
-Where the points $x_{N,i}$ are the roots of the Nth order legendre polynomial, and the weights are given by the following integral:
-$$c_{i,n}=\frac{1}{P_n^{\prime}(x_{N,i})}\int_{-1}^1\frac{P_n(x)}{x-x_{N,i}} \mathrm{d}x$$
+Where the points $`x_{N,i}`$ are the roots of the Nth order legendre polynomial, and the weights are given by the following integral:
+```math
+c_{i,n}=\frac{1}{P_n^{\prime}(x_{N,i})}\int_{-1}^1\frac{P_n(x)}{x-x_{N,i}} \mathrm{d}x
+```
 
 Note that the sample points and the relative weights are *purely* functions of the Legendre polynomials!
 Gauss calculated several of them, and their values haven't changed since.
 It might be a huge pain to calculate them, but you only have to do it *one time, EVER*.
 
-For now, you can use one of the standard libraries to get the roots of $P_N$:
+For now, you can use one of the standard libraries to get the roots of $`P_N`$:
 ```python
 import scipy as sp
 roots, weights = sp.special.roots_legendre(N)
@@ -125,15 +127,15 @@ Conveniently, scipy's roots_legendre function returns the weights too.
 
 Consider the integral
 
-$$
+```math
 \int_0^2\mathrm{d}y\, \frac{y^2}{\sqrt{2-y}}
-$$
+```
 
-At the upper limit of integration, the integrand becomes infinite. This integral still converges ($\sqrt{8192}/15$), but we have to be very careful with our numeric tools around those pesky infinities.
+At the upper limit of integration, the integrand becomes infinite. This integral still converges ($`\sqrt{8192}/15`$), but we have to be very careful with our numeric tools around those pesky infinities.
 Gaussian quadrature points are not evaluated at the limits of integration.
 
  - How many points do you need in your Gaussian quadrature to achieve 10 digits of precision?
- - Apply the change of variable $y=2\sin^2\theta$. 
+ - Apply the change of variable $`y=2\sin^2\theta`$. 
  - How many Simpson's rule points do you need to calculate this to 10 significant figures?
  - Now use Gaussian quadrature to calculate the integral. How many points do you need to achieve that same precision?
 
