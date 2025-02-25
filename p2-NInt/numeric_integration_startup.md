@@ -23,8 +23,13 @@ You're ready for a little more sophistication.
 
 ## The Deadline
 
+### Rough Draft (primary assignment and writeup, no extensions)
 > [!IMPORTANT]
-> Beginning of class on Thursday, Feb 27 (?)
+> Beginning of class on Tuesday, March 4
+
+### Final Submission
+> [!IMPORTANT]
+> Beginning of class on Thursday, March 6
 
 ## Programming specification:
 
