@@ -1,11 +1,11 @@
 import fcns
+import legendreplot
 
-N, a, b = int(input("\nN = ")), 0, 1
-if fcns.verify(a,b,a) == -1 and fcns.verify(a,b,b) == 1: print("yep it maps [a,b] to [-1,1]")
+N, a, b = int(input("\nN = ")), 0, 2
 L,R,M,T,S,Q = fcns.init(a,b,N)
+
+if fcns.usubtest(a,b,a) == -1 and fcns.usubtest(a,b,b) == 1: print("\n[a,b] maps to [-1,1].")
+
 fcns.answer(L,R,M,T,S,Q)
-
-#fcns.logplot(a,b,N)
 fcns.methodcheck(a,b)
-
-fcns.legendreplot()
+legendreplot.legendreplot()
