@@ -23,6 +23,9 @@ This program works in three parts to complete each project goal:
 </figure>
 <p>&nbsp;</p> 
 
+> [!NOTE]
+> I don't think my left/right/midpoint functions work properly. Mateo is reporting that 8192 subinterval are needed from the N-table, whereas I am reporting 32768. Also, I don't see much of a performance difference from the left-right-midpoint-trapezoidal-simpson stuff, but I feel like there should be a drastic difference.
+
 ### Extensions
 
 For extension 1, the following substitution was made:
