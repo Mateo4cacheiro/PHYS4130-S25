@@ -52,7 +52,7 @@ Start with one single integration slice and work up from there to two, four, eig
 For each value of the number of slices $`N`$: your program should print out the number of slices, its estimate of the integral, and its estimate of the error on the integral.
 
 > [!TIP]
-> The value is $`\approx 0.45583`$
+> The value is $`\approx 1.0057`$
 
 ### Gaussian quadrature
 
