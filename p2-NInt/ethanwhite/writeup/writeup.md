@@ -25,10 +25,17 @@ This program works in three parts to complete each project goal:
 
 ### Extensions
 
+## Extension Problem 1
+
 The following substitution was made:
 $y = 2\sin^2\theta \rightarrow dy = 4\sin\theta\cos\theta d\theta$ and of course, for our integrand,
 $y^2 = 4\sin^4\theta$ and $\sqrt{2-y}=\sqrt{2-2\sin^2\theta}=\sqrt{2}\cos\theta$. At $y = 0$, $\theta = 0$, and at $y = 2$, we have that $\theta = \pi/2$. Putting it all together:
-$\int^2dy\frac{y^2}{\sqrt{2-y}}=\int^{\pi/2}4\sin\theta\cos\theta\cdot\frac{4\sin^4\theta}{\sqrt{2}\cos\theta}d\theta=\sqrt{128}\int_0^{\pi/2}\sin^5\theta d\theta$
+$\int^2dy\frac{y^2}{\sqrt{2-y}}=\int^{\pi/2}4\sin\theta\cos\theta\cdot\frac{4\sin^4\theta}{\sqrt{2}\cos\theta}d\theta=\sqrt{128}\int_0^{\pi/2}\sin^5\theta d\theta$. 
+
+Before the substitution, I just plugged in a really big amount of subintervals. N = 100,000 subintervals did not even reach 5 digits precision for the quadrature method. I think a few billion would be required to reach 10 digits of precision. Simpson's method failed completely here (Python broke actually). 
+
+After the substitution, 87 subintervals was enough for 10 digits of precision using Simpson's method. For Gaussian quadrature, N = 9 was enough to reach 10 digits of precision. Voodoo stuff.
+
 
 ### Attribution
 
