@@ -11,11 +11,15 @@ Numerical integration is a powerful conceptual tool as to understanding how an i
 
 For gaussian quadrature, imagine you are a builder and you are measuring the area of the square house you are building. You could get your ruler and measure every single square foot individually, or, you could take a set of optimal points (like the vertices of the house) and calculate the area with just those four point measurements. This is essentially what Gauss-Legendre quadrature does-- it looks at optimal points along a function that provide very good approximations and assigns a weight to them. This process takes place from [-1,+1] and the orthogonal Legendre polynomials describe the weightings and roots of the function approximation.
 
-This program works in three parts. It uses Simpson's rule to create a table of N, which is the number of subintervals, the value of the integral calculated from N subintervals, and the error of that calculation with the actual value of the integral. Next, the program calculates the Gaussian quadrature of that same integral by finding our input to f(x) as f(u(x)), where u is the mapping that puts our f(x) integral within [-1,+1]. The du-component is multiplied by the final integration area. Lastly, the program creates a plot of legendre polynomials from first order to fourth order. It graphs each individal polynomial (two per plot), and then the resulting function from their multiplication. The integral is unitary along the plot's main diagonal since the Legendre polynomials form an orthogonal set. The off-diagonal terms are zero sometimes because of the coefficients of the resulting multiplication, and other times because the resultant function is odd along symmetric bounds.
+This program works in three parts to complete each project goal:
+
+1. It uses Simpson's rule to create a table of N, which is the number of subintervals, the value of the integral calculated from N subintervals, and the error of that calculation with the actual value of the integral. 
+2. Next, the program calculates the Gaussian quadrature of that same integral by finding our input to f(x) as f(u(x)), where u is the mapping that puts our f(x) integral within [-1,+1]. The du-component is multiplied by the final integration area. 
+3. Lastly, the program creates a plot of Legendre polynomials from first order to fourth order. It graphs each individal polynomial (two per plot), and then the resulting function from their multiplication. The integral is unitary along the plot's main diagonal since the Legendre polynomials form an orthogonal set. The off-diagonal terms are zero sometimes because of the coefficients of the resulting multiplication, and other times because the resultant function is odd along symmetric bounds.
 
 <figure>
   <img src=Figure_1.png>
-  <figcaption>The 4x4 plot of first - fourth order Legendre polynomials and their corresponding products with eachother.  </figcaption>
+  <figcaption>The 4x4 plot of first - fourth order Legendre polynomials and their corresponding products with eachother. </figcaption>
 </figure>
 <p>&nbsp;</p> 
 
