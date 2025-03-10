@@ -29,7 +29,8 @@ The main components of this project were created in the homework assignments (up
 
 1. https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html
 2. https://en.wikipedia.org/wiki/Gaussian_quadrature
-3.
+3. https://engcourses-uofa.ca/books/numericalanalysis/numerical-integration/gauss-quadrature/
+4. https://en.wikipedia.org/wiki/Legendre_polynomials
 
 ### Timekeeping
 
@@ -39,4 +40,4 @@ This project took about 15-20 hours of work. The main struggles were within the 
 
 1. Python was used for the entirity of this project. 
 
-2. I used numpy and math to.. do math stuff. I used matplotlib.pyplot to create the Legendre plot portion of the project. I used scipy to pull out the weights and roots of the Legendre polynomials.
+2. I used numpy and math to.. do math stuff. I used matplotlib.pyplot to create the Legendre plot portion of the project. I used scipy to pull out the weights and roots of the Legendre polynomials. None of these were particularly great, but I found matplotlib.pyplot to be as intuitive as usual (very).
