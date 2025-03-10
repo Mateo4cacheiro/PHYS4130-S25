@@ -27,8 +27,8 @@ This program works in three parts to complete each project goal:
 
 The following substitution was made:
 $y = 2\sin^2\theta \rightarrow dy = 4\sin\theta\cos\theta d\theta$ and of course, for our integrand,
-$y^2 = 4\sin^4\theta$ and $\sqrt{2-y}=\sqrt{2-2\sin^2\theta}=\sqrt{2}\cos\theta$. At $y = 0$, $\theta = 0$, and at $y = 2$, we have that $\theta = \pi/2$. Putting it all together:\\ 
-\begin{center}$\int_0^2dy\frac{y^2}{\sqrt{2-y}}=\int_0^{\pi/2}4\sin\theta\cos\theta\cdot\frac{4\sin^4\theta}{\sqrt{2}\cos\theta}d\theta=\sqrt{128}\int_0^{\pi/2}\sin^5\theta d\theta$\end{center}
+$y^2 = 4\sin^4\theta$ and $\sqrt{2-y}=\sqrt{2-2\sin^2\theta}=\sqrt{2}\cos\theta$. At $y = 0$, $\theta = 0$, and at $y = 2$, we have that $\theta = \pi/2$. Putting it all together:
+\begin{center}$\int^2dy\frac{y^2}{\sqrt{2-y}}=\int^{\pi/2}4\sin\theta\cos\theta\cdot\frac{4\sin^4\theta}{\sqrt{2}\cos\theta}d\theta=\sqrt{128}\int_0^{\pi/2}\sin^5\theta d\theta$\end{center}
 
 ### Attribution
 
