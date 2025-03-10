@@ -10,8 +10,13 @@ import matplotlib.pyplot as plt
 
 
 def func(k,a,b):
-    u = (k*((b-a)/2) + ((a+b)/2))
+    u = ((2*k) - a - b)/(b-a)
     val = (np.sin(np.sqrt(100*u)))**2
+    return val
+
+def func1(k, a, b):
+    u = ((2*k) - a - b)/(b-a)
+    val = np.cos(u)
     return val
 
 def traprule(f, a, b, N):
@@ -29,30 +34,20 @@ def traprule(f, a, b, N):
 
 
 def gauss_quad(N, a, b):
-    i = 0
     I = 0
-    du = (b-a)/2
-    #roots, weights = scipy.special.roots_legendre(i+1)
+    dx = (2/(b - a))
     for i in range (N):
         roots, weights = scipy.special.roots_legendre(i+1)
-        I += weights[i]*func(roots[i],0,2)
+        I += weights[i]*func(roots[i], -1, 1)
 
-    return I*du
-print(gauss_quad(10, 0, 2))
+    return I*dx
+print(gauss_quad(100, -1, 1))
 
+fig, axs = plt.subplots(4, 4)
 
 min = -1.0
 max = 1.0
 step = 0.05
-# for n in range(6):
-#     Pn = scipy.special.legendre(n)
-#     x = np.arange(min,max+step,step)
-#     y = Pn(x)
-#     plt.plot(x, y)
-
-
-
-fig, axs = plt.subplots(4, 4)
 
 x = np.arange(min, max + step, step)
 
