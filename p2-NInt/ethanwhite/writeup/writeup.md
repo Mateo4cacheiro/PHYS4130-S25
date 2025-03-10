@@ -23,6 +23,12 @@ This program works in three parts to complete each project goal:
 </figure>
 <p>&nbsp;</p> 
 
+### Extensions
+
+The following substitution was made:
+$y = 2\sin^2\theta \rightarrow dy = 4\sin\theta\cos\theta d\theta$
+$y^2 = 4\sin^4\theta, \sqrt{2-y}=\sqrt{2-2\sin^2\theta}=\sqrt{2}\cos\theta$ 
+
 ### Attribution
 
 The main components of this project were created in the homework assignments (up to simpson's rule, at least). Zeke found the first source, [1], helpful so I used it.
