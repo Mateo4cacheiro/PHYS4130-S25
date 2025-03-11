@@ -9,4 +9,4 @@ can be used to map an interval [a, b] to [-1, 1].
 
 ## The Program
 The code for this project is very brief. A function is defined, in this case given as 
-$f(x) = sin^2(\sqrt(100x))$
+$f(x) = sin^2(\sqrt{100x})$
