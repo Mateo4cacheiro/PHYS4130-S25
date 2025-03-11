@@ -1,6 +1,6 @@
 # Author: Adam Grice
 # Project: P2-NInt
-# Date: 03-06-2025
+# Date: 03-10-2025
 
 import numpy as np
 import scipy
@@ -35,13 +35,13 @@ def traprule(f, a, b, N):
 
 def gauss_quad(N, a, b):
     I = 0
-    dx = (2/(b - a))
-    for i in range (N):
-        roots, weights = scipy.special.roots_legendre(i+1)
-        I += weights[i]*func1(roots[i], -1, 1)
+    dx = ((b - a)/2)
+    roots, weights = scipy.special.roots_legendre(N+1)
+    I = dx*sum(weights*func(roots, a, b))
 
-    return I*dx
-print(gauss_quad(100, 1, 5))
+
+    return I
+print(gauss_quad(100, 0, 2))
 
 fig, axs = plt.subplots(4, 4)
 
