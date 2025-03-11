@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 #Set Important Variables
 ArraySize= 10000                                                            #Matrix Size
-Size = 200000                                                               #Total Particles                                                                    
+Size = 24004                                                               #Total Particles                                                                    
 S=1                                                                         #Set Stickiness parameter (0.01,1)
 MaxArm = 0                                                                  #Set longest arm length to zero
 CreationRadius = 100                                                        #Creation radius will start at 100 units

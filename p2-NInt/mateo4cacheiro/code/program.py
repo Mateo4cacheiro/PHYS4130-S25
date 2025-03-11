@@ -1,14 +1,12 @@
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
-import pylab as py
 from scipy.special import legendre
 import scipy as sp
 
 
 ###############################################################################################################################################
 #Location to define one mathematical function.
-def function(x):
+def function1(x):
     return((np.sin(np.sqrt(100*x)))**2) 
 ###############################################################################################################################################
 
@@ -22,7 +20,7 @@ def function2(x):
 
 
 ###############################################################################################################################################
-#Defines a function that will take a mathematical fucntion and its boundary points and return its integral using a leftpoint riemann
+#Defines a function that will take a mathematical function and its boundary points and return its integral using a left-point Riemann
 def leftpoint(f,a,b,N):
     h = (b-a)/N #calculate width of box
     x = a #set starting left point as 0
@@ -35,7 +33,7 @@ def leftpoint(f,a,b,N):
 
 
 ###############################################################################################################################################
-#Defines a function that will take a mathematical fucntion and its boundary points and return its integral using a midpoint riemann
+#Defines a function that will take a mathematical function and its boundary points and return its integral using a midpoint Riemann
 def midpoint(f,a,b,N):
     h = (b-a)/N #calculate width of box
     x = a+h/2 #set starting mid point as halfway through a rectangle
@@ -48,7 +46,7 @@ def midpoint(f,a,b,N):
 
 
 ###############################################################################################################################################
-#Defines a function that will take a mathematical fucntion and its boundary points and return its integral using a rightpoint riemann
+#Defines a function that will take a mathematical function and its boundary points and return its integral using a right-point Riemann
 def rightpoint(f,a,b,N):
     h = (b-a)/N #calculate width of box
     x = h #set starting right point as h
@@ -61,7 +59,7 @@ def rightpoint(f,a,b,N):
 
 
 ###############################################################################################################################################
-#Defines a function that will take a mathematical fucntion and its boundary points and return its integral using a trapezoid riemann    
+#Defines a function that will take a mathematical function and its boundary points and return its integral using a trapezoid Riemann    
 def trapezoid(f,a,b,N):
     h = (b-a)/N #calculate width of box
     Sum= 0 #set starting sum to 0.
@@ -75,7 +73,7 @@ def trapezoid(f,a,b,N):
 
 
 ###############################################################################################################################################
-#Defines a function that will take a mathematical fucntion and its boundary points and return its integral using simpson's rule
+#Defines a function that will take a mathematical function and its boundary points and return its integral using Simpson's rule
 def Simp(f,a,b,N):
     I=1/3*trapezoid(f,a,b,N)+2/3*midpoint(f,a,b,N)
     return(I)
@@ -83,7 +81,7 @@ def Simp(f,a,b,N):
 
 
 ###############################################################################################################################################
-#Function used to express the Nth legendre Polynomials as a function of x between -1 and 1.
+#Function used to express the Nth Legendre Polynomials as a function of x between -1 and 1.
 def L(x,N):
     leg =legendre(N)
     P_N = leg(x)
@@ -92,11 +90,11 @@ def L(x,N):
 
 
 ###############################################################################################################################################
-#Function used to find the integral of the product of two legendre Polynomials between a and b. 
+#Function used to find the integral of the product of two Legendre Polynomials between a and b. 
 def Ltrap(c,d,a,b,N):
     h = (b-a)/N #calculate width of box
     Sum= 0 #set starting sum to 0.
-    f=legendre(c)*legendre(d) #c and d indicate the order of the individual legendre polynomials.
+    f=legendre(c)*legendre(d) #c and d indicate the order of the individual Legendre polynomials.
     Sum+=(h/2)*(f(a)+f(b)) 
     i=1
     while i <= N-1:
@@ -121,9 +119,9 @@ def usub(f,a,b,u):
 
 
 ###############################################################################################################################################
-#Integrates a function using guassian quadrature.    
+#Integrates a function using Gaussian quadrature.    
 def Gquad(f,a,b,N):
-    roots, weights = sp.special.roots_legendre(N) #pull roots of legendre polynomials and associated weights
+    roots, weights = sp.special.roots_legendre(N) #pull roots of Legendre polynomials and associated weights
     Sum =0 #Set sum to zero
     for i in range(N): #sum all N terms
         Sum += weights[i]*usub(f,a,b,roots[i]) #add the product of the weight and the value of f(u) at the root.
@@ -133,9 +131,9 @@ def Gquad(f,a,b,N):
 
 
 
-f,a,b,N= function,0,2,1
+f,a,b,N= function1,0,2,1
 correct_val=1.005702542825726
-ITE,IT=100,0
+ITE,IT=100000000,0   #use caution to make sure 100000000 is very large relative to integral you wish to find. 
 i=0
 print("The following values are found using trapezoid rule")
 while(ITE>0.0000005):
@@ -145,7 +143,7 @@ while(ITE>0.0000005):
     i+=1
     N = 2**i
     
-xvals =  np.linspace(-1,1,N)
+xvals =  np.linspace(-1,1,10000)
 Sum =  np.zeros([4,4])
 
 fig = plt.figure(figsize=(10, 10))
@@ -164,12 +162,15 @@ for i in range(4):
             Sum[i,j]=0
         if abs(1-Sum[i,j])<0.00001:
             Sum[i,j]=1
-plt.show()
+#Uncomment the next line to make the code output the graphic. I have left this commented out because I have a saved version in the write-up and my computer really struggles to show the fig. 
+#plt.show()
 print(Sum)
 
-print("Now using Gaussian quadrature")
-f,a,b,N =  function2,0,2,12
-if( usubcheck(a,b,a)==-1 and  usubcheck(a,b,b)==1):
+print("Now using Gaussian Quadrature")
+f,a1,b1,N =  function2,0,2,12
+if( usubcheck(a1,b1,a1)==-1 and  usubcheck(a1,b1,b1)==1):
     print("u(x) successfully maps [a,b] to [-1,1]")
-Sum =  Gquad(f,a,b,N)
-print(Sum, "was found using ", N, " Subintervals")
+    Sum =  Gquad(f,a1,b1,N1)
+    print(Sum, "was found using ", N, " Sub-intervals")
+else:
+    print("failure: u(x) could not successfuly map [a,b] to [-1,1] and the integral could not be found using Guassian Quadrature.")
