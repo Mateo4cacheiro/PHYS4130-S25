@@ -37,7 +37,7 @@ def gauss_quad(N, a, b):
     I = 0
     dx = ((b - a)/2)
     roots, weights = scipy.special.roots_legendre(N+1)
-    I = dx*sum(weights*func(roots, a, b))
+    I = dx*np.sum(weights*func(roots, a, b))
 
 
     return I

@@ -36,3 +36,8 @@ def func(u,a,b):
     val = (np.sin(np.sqrt(100*k)))**2
     return val
 ```
+The integrating function assigns the roots and weights of legendre polynomials 0 to N + 1 to two numpy arrays. Then the numpy.sum function is used to sum from 1 to N over func(roots, a, b). The final sum is multiplied by $dx = \frac{2}{b-a}du$. Shown below are both the summation and the code implementation of the summation.
+
+```math
+\int_{0}^{2} sin^2(sqrt{100x})dx = \int{-1}{1} sin^2(sqrt{100(u + 1)})du \approx \sum_{i=1}^N c_{N,i} sin^2(sqrt{100(x_{N,i} + 1)})
+```
