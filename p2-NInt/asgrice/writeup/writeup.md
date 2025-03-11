@@ -9,4 +9,30 @@ can be used to map an interval [a, b] to [-1, 1].
 
 ## The Program
 The code for this project is very brief. A function is defined, in this case given as 
-$f(x) = sin^2(\sqrt{100x})$
+$f(x) = sin^2(\sqrt{100x})$ with a domain of integration [0, 2]. A u-substitution is also
+provided as 
+
+```math
+u=\frac{2x-a-b}{b-a}.
+```
+
+which with a bit of rearranging gives 
+
+```math
+x=\frac{1}{2}(u(b - a) + a + b).
+```
+
+and 
+
+```math
+\frac{du}{dx} = \frac{2}{b - a}
+```
+
+The function definition is shown below:
+
+```
+def func(u,a,b):
+    k = 0.5*(u*(b-a) + a + b)
+    val = (np.sin(np.sqrt(100*k)))**2
+    return val
+```
