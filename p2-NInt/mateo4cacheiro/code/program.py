@@ -133,12 +133,12 @@ def Gquad(f,a,b,N):
 
 f,a,b,N= function1,0,2,1
 correct_val=-(b-a)**3/(12N**2) * (f(b)-f(a))
-ITE,IT=100000000,0   #use caution to make sure 100000000 is very large relative to integral you wish to find. 
+ITE,IT=,0   #use caution to make sure 100000000 is very large relative to integral you wish to find. 
 i=0
 print("The following values are found using trapezoid rule")
 while(ITE>0.0000005):
     IT= trapezoid(f,a,b,N)
-    ITE=abs(IT-correct_val)
+    ITE=abs(-(b-a)**3/(12*N**2) * ((f(b+((b-a)/N))-f(b-((b-a)/N)))/(2*(b-a)/N)-(f(a+(b-a)/N)-f(a-((b-a)/N))/(2*(b-a)/N))))
     print(f"| value: {IT:2.7f} | error: {ITE:2.7f} | subdivisions: {N}|")
     i+=1
     N = 2**i
