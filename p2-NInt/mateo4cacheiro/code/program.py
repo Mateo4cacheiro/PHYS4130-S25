@@ -132,13 +132,15 @@ def Gquad(f,a,b,N):
 
 
 f,a,b,N= function1,0,2,1
-correct_val=-(b-a)**3/(12N**2) * (f(b)-f(a))
-ITE,IT=,0   #use caution to make sure 100000000 is very large relative to integral you wish to find. 
+ITE,IT=10000000000,0   #use caution to make sure 100000000 is very large relative to integral you wish to find. 
 i=0
+step = (b-a)/(10000)
 print("The following values are found using trapezoid rule")
 while(ITE>0.0000005):
     IT= trapezoid(f,a,b,N)
-    ITE=abs(-(b-a)**3/(12*N**2) * ((f(b+((b-a)/N))-f(b-((b-a)/N)))/(2*(b-a)/N)-(f(a+(b-a)/N)-f(a-((b-a)/N))/(2*(b-a)/N))))
+    diff=(((f(b-(step))-f(b))/(step))-((f(a)-f(a+(step)))/(step)))
+    ITE=abs(-(b-a)**3/(12*N**2) * diff)
+    print(ITE)
     print(f"| value: {IT:2.7f} | error: {ITE:2.7f} | subdivisions: {N}|")
     i+=1
     N = 2**i
@@ -170,7 +172,7 @@ print("Now using Gaussian Quadrature")
 f,a1,b1,N =  function2,0,2,12
 if( usubcheck(a1,b1,a1)==-1 and  usubcheck(a1,b1,b1)==1):
     print("u(x) successfully maps [a,b] to [-1,1]")
-    Sum =  Gquad(f,a1,b1,N1)
+    Sum =  Gquad(f,a1,b1,N)
     print(Sum, "was found using ", N, " Sub-intervals")
 else:
     print("failure: u(x) could not successfuly map [a,b] to [-1,1] and the integral could not be found using Guassian Quadrature.")
