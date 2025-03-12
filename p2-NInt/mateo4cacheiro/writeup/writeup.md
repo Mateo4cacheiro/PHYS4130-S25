@@ -20,7 +20,7 @@ The program will loop and compute the integral of the function using (In latex s
 After completing the final trapezoid Riemann sum, the program will use the Legendre Polynomials in the Scipy.Special Library to generate a figure and confirm the first four are orthogonal. Line 147 uses the numpy function linscape to generate a list of 10000 evenly spaced numbers between -1 and 1. This task essentially generates the domain that will be used for the generated plots. Using the gridspec tool from Matplotlib.pyplots, a 4x4 table that can hold graphics is generated. Within each cell of this table the subplots function creates three subplots. The first two subplots in each are used to display the Legendre Polynomial that is the degree of the row and column respectively. The last subplot is then used to plot their product. For each of these plots the domain created by the linscape function is used as the x values. After the plot of the product is created the trapeziod rule is used to find the integral of the product from -1 to 1. Each sum is stored in a 4x4 array. If the found value is within 0.00001 of 0 or 1 the value is rounded to make the output more meaningful. The final step of this section of the program is to output the plots and array of inner products. 
 
 <figure>
-  <img src=fLegendre_polynomials_1_to_4.png>
+  <img src=Legendre_polynomials_1_to_4.png>
   <figcaption>figure containing the plots of the first four Legendre Polynomials and their products. </figcaption>
 </figure>
 <p>&nbsp;</p> 
