@@ -43,9 +43,8 @@ after the Sum is found the function implements the du correction factor that occ
 > Another important thing to note is that using Gaussian quadrature with only 12 intervals outputs a value with similar error to a trapezoid Riemann with 8000+ intervals. This means that Gaussian quadrature converges with much fewer intervals and thus calls the function significantly less than any other Riemann approximation method.  
 
 
-
 ```mermaid
-  graphTD;
+  graph TD;
     BeginPhase1-->Setfunctionandbounds;
     Setfunctionandbounds-->UseTrapeziodrule;
     UseTrapeziodrule--Ifvalueisnotwithin0.00001incrementN-->UseTrapeziodrule;
