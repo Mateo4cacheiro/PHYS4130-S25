@@ -44,45 +44,42 @@ after the Sum is found the function implements the du correction factor that occ
 
 
 
-
 ```mermaid
-  graph TD;
-      
-      Begin Phase 1 --> Set function and bounds;
-      Set function and bounds --> Use Trapeziod rule;
-      Use Trapeziod rule -- If value is not within 0.00001 increment N --> Use Trapeziod rule;
-      Use Trapeziod rule -- If value is within 0.00001 --> Phase 1 complete;
-      
-      Phase 1 complete --> Begin Phase 2;
-      Begin Phase 2 --> Generate 4x4 grid;
-      Generate 4x4 grid --> for i <= 4;
-      for i <= 4 --> for j <= 4;
-      for j<=4 --> Generate 3 subplots;
-      Generate 3 subplots --> fill 3 plots with P_i, P_j, and P_i * P_j;
-      fill 3 plots with P_i, P_j, and P_i * P_j --> find inner production of P_i and P_j;
-      find inner production of P_i and P_j -- if i!=4, j!=4 then j+=1 --> for j<=4;
-      find inner production of P_i and P_j -- if i!=4, j==4 then j=0 & i+=1 --> for i<=4;
-      find inner production of P_i and P_j -- if i==4, j==4 --> Output plots and values for inner product;
-      Output plots and values for inner product --> Phase 2 complete;
-      
-      Phase 2 complete --> Begin Phase 3;
-      Begin Phase 3 --> Set funciton2 and bounds;
-      Set funciton2 and bounds --> Check usub will work;
-      Check usub will work -- Failure --> Terminate program;
-      Check usub will work -- Success --> Send function and bounds to Gquad;
-      Send function and bounds to Gquad --> Take roots and weights from scipy.special;
-      Take roots and weights from scipy.special --> for i <= N;
-      for i <= N --> add value found from using equation (1)
-      add value found from using equation (1) -- if i!=4 then i+=1 --> for i <= N;
-      add value found from using equation (1) -- if i==4
-      CheckIfFull--If structure is not full-->CreateParticle;
-      CreateParticle-->CheckAttached;
-      CheckAttached--If the particle is not attached-->Move;
-      CheckAttached--If the particle is attached-->Increment;
-      Move-->CheckAttached;
-      Increment-->CheckIfFull;
-      CheckIfFull--If the struture is full-->CreateImage          
+  graphTD;
+    BeginPhase1-->Setfunctionandbounds;
+    Setfunctionandbounds-->UseTrapeziodrule;
+    UseTrapeziodrule--Ifvalueisnotwithin0.00001incrementN-->UseTrapeziodrule;
+    UseTrapeziodrule--Ifvalueiswithin0.00001-->Phase1complete;
+    Phase1complete-->BeginPhase2;
+    BeginPhase2-->Generate4x4grid;
+    Generate4x4grid-->fori<=4;
+    fori<=4-->forj<=4;
+    forj<=4-->Generate3subplots;
+    Generate3subplots-->fill3plotswithP_i,P_j,andP_i*P_j;
+    fill3plotswithP_i,P_j,andP_i*P_j-->findinnerproductionofP_iandP_j;
+    findinnerproductionofP_iandP_j--ifi!=4,j!=4thenj+=1-->forj<=4;
+    findinnerproductionofP_iandP_j--ifi!=4,j==4thenj=0&i+=1-->fori<=4;
+    findinnerproductionofP_iandP_j--ifi==4,j==4-->Outputplotsandvaluesforinnerproduct;
+    Outputplotsandvaluesforinnerproduct-->Phase2complete;
+    Phase2complete-->BeginPhase3;
+    BeginPhase3-->Setfunciton2andbounds;
+    Setfunciton2andbounds-->Checkusubwillwork;
+    Checkusubwillwork--Failure-->Terminateprogram;
+    Checkusubwillwork--Success-->SendfunctionandboundstoGquad;
+    SendfunctionandboundstoGquad-->Takerootsandweightsfromscipy.special;
+    Takerootsandweightsfromscipy.special-->fori<=N;
+    fori<=N-->addvaluefoundfromusingequation(1)
+    addvaluefoundfromusingequation(1)--ifi!=4theni+=1-->fori<=N;
+    addvaluefoundfromusingequation(1)--ifi==4
+    CheckIfFull--Ifstructureisnotfull-->CreateParticle;
+    CreateParticle-->CheckAttached;
+    CheckAttached--Iftheparticleisnotattached-->Move;
+    CheckAttached--Iftheparticleisattached-->Increment;
+    Move-->CheckAttached;
+    Increment-->CheckIfFull;
+    CheckIfFull--Ifthestrutureisfull-->CreateImage
 ```
+
 
 > [!NOTE]
 > 
