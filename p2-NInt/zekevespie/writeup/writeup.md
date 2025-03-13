@@ -21,7 +21,7 @@ I = \int_0^2 \mathrm{d}x\, \sin^2\left(\sqrt{100x}\right)
 
 By doing as told, I found that by multiplying the number of points by 2 repeatedly the integrals solution stabilized with 6 significant figures of accuracy at the point N = 8192.
 
-I also found the error by using an equation I found on Wikipedia [1] that is somehow derived for trapezoidal rule, and it ended up being around 2E-8, which is an order of magnitude off from what I see the difference being on Maple, that being 5E-7.
+I also found the error by using an equation I found on Wikipedia [1] that is somehow derived for trapezoidal rule, and it ended up being around 2E-8, which is an order of magnitude off from what I see the difference being on Maple, that being 5E-7. [NOTE: The first value is in the associated Jupyter Notebook]
 
 ### SIMPSON'S RULE
 
@@ -55,7 +55,7 @@ See below a chart of relevant Legendre Polynomials, with each entry having subpl
 </figure>
 <p>&nbsp;</p> 
 
-See here that each of these polynomials has a number of zeros equal to the degree of the polynomial. In order to optimize the Gaussian Quadrature method of numerical integration, "the optimal points for an N order Gaussian Quadrature are the zeros of that order of Legendre polynomial" [2]. The weights and roots of the Legendre Polynomials used in the equation below describe the Gaussian Quadrature method:
+See here that each of these polynomials has a number of zeros equal to the degree of the polynomial. It would be safe to assume based off these plots that the integrand can be written in terms of weighted Legendre Polynomials. It is for this reason among others that in order to optimize the Gaussian Quadrature method of numerical integration, "the optimal points for an N order Gaussian Quadrature are the zeros of that order of Legendre polynomial" [2]. The weights and roots of the Legendre Polynomials used in the equation below describe the Gaussian Quadrature method:
 
 ```math
 \int_{-1}^{1} \mathrm{d}u\, f(u) \approx \sum_{i=1}^N c_{N,i} f\left(u_{N,i}\right)
