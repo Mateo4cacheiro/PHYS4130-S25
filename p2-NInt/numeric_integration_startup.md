@@ -23,8 +23,13 @@ You're ready for a little more sophistication.
 
 ## The Deadline
 
+### Rough Draft (primary assignment and writeup, no extensions)
 > [!IMPORTANT]
-> Beginning of class on Thursday, Feb 27 (?)
+> Beginning of class on Tuesday, March 4
+
+### Final Submission
+> [!IMPORTANT]
+> Beginning of class on Thursday, March 6
 
 ## Programming specification:
 
@@ -47,7 +52,7 @@ Start with one single integration slice and work up from there to two, four, eig
 For each value of the number of slices $`N`$: your program should print out the number of slices, its estimate of the integral, and its estimate of the error on the integral.
 
 > [!TIP]
-> The value is $`\approx 0.45583`$
+> The value is $`\approx 1.0057`$
 
 ### Gaussian quadrature
 
