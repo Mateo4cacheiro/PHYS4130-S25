@@ -5,7 +5,10 @@ Gauss-Legendre Quadrature is a numeric integration method which approximates the
 integral of a function $f(x)$ as a sum from 1 to N of $c_{N,i}*f(x_i)$ where $x_i$ are the roots of the Nth 
 Legendre polynomial, and $c_{N,i}$ are the weights associated with each polynomial. The domain
 of integration must be mapped to [-1, 1] for this method to work. A simple u-substitution
-can be used to map an interval [a, b] to [-1, 1].
+can be used to map an interval [a, b] to [-1, 1]. The Legendre polynomials are a complete set of orthogonal polynomials, so any function can be constructed from a sum
+of these polynomials. The figure below shows a plot of $P_i, P_j,$ and $P_i*P_j$:
+
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p2-NInt/asgrice/writeup/Legendre_polynomials.png)
 
 ## The Program
 The code for this project is very brief. A function is defined, in this case given as 
@@ -39,7 +42,7 @@ def func(u,a,b):
 The integrating function assigns the roots and weights of legendre polynomials 0 to N + 1 to two numpy arrays. Then the numpy.sum function is used to sum from 1 to N over func(roots, a, b). The final sum is multiplied by $dx = \frac{2}{b-a}du$. Shown below are both the summation and the code implementation of the summation.
 
 ```math
-\int_{0}^{2} sin^2(sqrt{100x})dx = \int_{-1}^{1} sin^2(\sqrt{100(u + 1)})du \approx \sum_{i=1}^N c_{N,i} sin^2(sqrt{100(x_{N,i} + 1)})
+\int_{0}^{2} sin^2(\sqrt{100x})dx = \int_{-1}^{1} sin^2(\sqrt{100(u + 1)})du \approx \sum_{i=1}^N c_{N,i} sin^2(\sqrt{100(x_{N,i} + 1)})
 ```
 
 ```
