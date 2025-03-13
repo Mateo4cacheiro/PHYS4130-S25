@@ -10,10 +10,10 @@ of these polynomials. The figure below shows plots of $P_i, P_j,$ and $P_i*P_j$ 
 
 ![](https://github.com/asgrice/PHYS4130-S25/blob/main/p2-NInt/asgrice/writeup/Legendre_polynomials.png)
 
-In red are the $P_i*P_j$, and it is reasonably clear from these plots that $\int_{-1}^{1} P_i*P_j dx = 1$ where $i = j$.
+In red are the $P_i*P_j$, and it is reasonably clear from these plots that $`\int_{-1}^{1} P_i*P_j dx = 1`$ where $`i = j`$.
 ## The Program
 The code for this project is very brief. A function is defined, in this case given as 
-$f(x) = sin^2(\sqrt{100x})$ with a domain of integration [0, 2]. A u-substitution is also
+$`f(x) = sin^2(\sqrt{100x})`$ with a domain of integration [0, 2]. A u-substitution is also
 provided as 
 
 ```math
@@ -40,7 +40,7 @@ def func(u,a,b):
     val = (np.sin(np.sqrt(100*k)))**2
     return val
 ```
-The integrating function assigns the roots and weights of legendre polynomials 0 to N + 1 to two numpy arrays. Then the numpy.sum function is used to sum from 1 to N over func(roots, a, b). The final sum is multiplied by $dx = \frac{2}{b-a}du$. Shown below are both the summation and the code implementation of the summation.
+The integrating function assigns the roots and weights of legendre polynomials 0 to N + 1 to two numpy arrays. Then the numpy.sum function is used to sum from 1 to N over func(roots, a, b). The final sum is multiplied by $`dx = \frac{2}{b-a}du`$. Shown below are both the summation and the code implementation of the summation.
 
 ```math
 \int_{0}^{2} sin^2(\sqrt{100x})dx = \int_{-1}^{1} sin^2(\sqrt{100(u + 1)})du \approx \sum_{i=1}^N c_{N,i} sin^2(\sqrt{100(x_{N,i} + 1)})
