@@ -51,7 +51,7 @@ The main components of this project were created in the homework assignments (up
 
 ### Timekeeping
 
-This project took about 15-20 hours of work. The main struggles were within the extension questions.
+This project took about 15-20 hours of work. The main struggles were within the second extension question since it's such a hard concept to understand and also because it's literally just magic.
 
 ### Languages, Libraries, Lessons Learned
 
