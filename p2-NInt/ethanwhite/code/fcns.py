@@ -2,51 +2,50 @@ import numpy as np
 import math # Used towards square-rooting things.
 import scipy as sp # For Legendre polynomial weight and roots
 
-def f(x,c): # The function that we are working with.
+def f(x): # The function that we are working with.
 	f = math.sin(math.sqrt(100*x))**2
-	if c == "Y": f = math.sqrt(128) * (math.sin(x))**5
 	return f
 
-def leftpoint(a,b,N,c):
+def leftpoint(a,b,N):
 	sum, h = 0, (b-a)/N
 	x = a # Setting the left point at x = a.
 	for i in range(0,N-1):
 		x += h # Iterating by h.
-		sum += f(x,c) * h # Adding this new rectangle sum.
+		sum += f(x) * h # Adding this new rectangle sum.
 
 	return sum
 
-def rightpoint(a,b,N,c):
+def rightpoint(a,b,N):
 	sum, h = 0, (b-a)/N
 	x = a + h # Setting the point at x = a + h (the right of the leftpoint rectangle)
 	for i in range(0,N-1):
 		x += h # Iterating by h.
-		sum += f(x,c) * h # Adding this new rectangle sum.
+		sum += f(x) * h # Adding this new rectangle sum.
 
 	return sum
 
-def midpoint(a,b,N,c):
+def midpoint(a,b,N):
 	sum, h = 0, (b-a)/N
 	x = a + h/2 # Finding the middle between left and right endpoints.
 	for i in range(0,N-1):
 		x += h # Iterating by h.
-		sum += f(x,c) * h # Adding this new rectangle sum.
+		sum += f(x) * h # Adding this new rectangle sum.
 
 	return sum
 
-def trapezoid(a,b,N,c):
-        sum = (leftpoint(a,b,N,c) + rightpoint(a,b,N,c))/2 # Formula provided by homework.
+def trapezoid(a,b,N):
+        sum = (leftpoint(a,b,N) + rightpoint(a,b,N))/2 # Formula provided by homework.
         return sum
 
-def simpson(a,b,N,c):
-        sum = trapezoid(a,b,N,c)/3 + 2*midpoint(a,b,N,c)/3 # Formula provided by homework.
+def simpson(a,b,N):
+        sum = trapezoid(a,b,N)/3 + 2*midpoint(a,b,N)/3 # Formula provided by homework.
         return sum
 
-def quadrature(a,b,N,c): # Quadrature method!
+def quadrature(a,b,N): # Quadrature method!
 	roots, weights = sp.special.roots_legendre(N) # Provided on writeup.
 	sum = 0
 	for i in range(0,N):
-		sum += weights[i] * f(((b-a)*roots[i]+a+b)/2,c) # Multiplies the weight by the function evaluated at optimal points. Essentially saying weights * f(x(u)).
+		sum += weights[i] * f(((b-a)*roots[i]+a+b)/2) # Multiplies the weight by the function evaluated at optimal points. Essentially saying weights * f(x(u)).
 		if i == N-1: sum *= (b-a)/2 # Our du-component that we must use from our initial mapping.
 
 	return sum
@@ -66,21 +65,20 @@ def answer(L,R,M,T,S,Q): # Just prints the integral values obtained from differe
 	return
 
 def init(a,b,N): # Initializes variables to correspond to integral values.
-	c = "weed goku 69" # Just ignore this LOL.
-	L = leftpoint(a,b,N,c)
-	R = rightpoint(a,b,N,c)
-	M = midpoint(a,b,N,c)
-	T = trapezoid(a,b,N,c)
-	S = simpson(a,b,N,c)
-	Q = quadrature(a,b,N,c)
+	L = leftpoint(a,b,N)
+	R = rightpoint(a,b,N)
+	M = midpoint(a,b,N)
+	T = trapezoid(a,b,N)
+	S = simpson(a,b,N)
+	Q = quadrature(a,b,N)
 
 	return L,R,M,T,S,Q
 
 def methodcheck(a,b): # Used towards creating the Simpson's rule N-table.
 	N, correct, error, i = 1, 1.0057025428, 1, 0
-	print("") # Ignore this LOL.
+	print("")
 	while error > 0.0000005: # For finding 6-significant digits accuracy.
-		val = simpson(a,b,N,"weed goku 69") # Calculating value at this N. Ignore weed goku.
+		val = simpson(a,b,N) # Calculating value at this N.
 		error = abs(correct - val) # Calculating error from actual value.
 		print("N: ",N,", VALUE: ",f"{val:.{8}g}",", ERROR: ",f"{error:.{3}g}") # Creates the n-table.
 		i += 1 # Iterating i.
