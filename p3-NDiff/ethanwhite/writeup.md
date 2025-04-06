@@ -26,13 +26,13 @@ $f(x+2h)=f(x)+2f'(x)h+2f''(x)h^2+\frac{4}{3}f^{(3)}(x)h^3+\frac{2}{3}f^{(4)}(x)h
 
 $af(x-2h)+bf(x-h)+cf(x)+df(x+h)+ef(x+2h)=(a+b+c+d+e)f(x)+(-2a-b+d+2e)hf'(x)+(2a+\frac{b}{2}+\frac{d}{2}+2e)h^2f''(x)+(-\frac{4a}{3}-\frac{b}{6}+\frac{d}{6}+\frac{4e}{3})h^3f^{(3)}(x)+(\frac{2a}{3}\frac{b}{24}+\frac{d}{24}+\frac{2e}{3})h^4f^{(4)}(x)+O(5)$
 
-Then, we need to solve the system of equations:
+Then, we need to solve the system of equations: \\
 
-$a+b+c+d+e = 0$
-$-2a-b+d+2e = 1$
-$2a + b/2 + d/2 + 2e = 0$
-$-4a/3-b/6+d/6+4e/3 = 0$
-$2a/3+b/24+d/24+2e/3 = 0$
+$a+b+c+d+e = 0$ \\
+$-2a-b+d+2e = 1$ \\
+$2a + b/2 + d/2 + 2e = 0$ \\ 
+$-4a/3-b/6+d/6+4e/3 = 0$ \\
+$2a/3+b/24+d/24+2e/3 = 0$ \\
 
 3.2b) The error is proportional to $h^4$ since the line is.. relatively straight. Solving for the slope of the line yields $m \approx 0.89$, which is pretty close. After h goes lower than 0.001, the error looks atrocious (since the log of 1/$h^4$ would be so close to 0 the log would mess up). But otherwise it is pretty close.
 
