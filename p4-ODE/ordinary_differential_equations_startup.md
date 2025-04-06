@@ -16,15 +16,8 @@ In this next project, you will use ODE solvers to explore a few different system
 Feel free to compare [SciPy's integrators](https://docs.scipy.org/doc/scipy/reference/integrate.html) to your Euler's Method and your RK2.
 
  1. For a simple harmonic oscillator *not* at rest, what shape will it trace out in phase space?
- 2. What happens if you add a constant to a Simple Harmonic Oscillator?
  3. How does a SHM evolve with a linear damping term?
- 4. How does phase space area (Total Mechanical Energy) evolve in all 3 scenerios?
- 5. How do different integrators affect this variation in area?
-
-## Integration Techniques
-I expect you to use RK4(5) and at least one other SciPy provided integrator.
-You will need to write your own Verlet integrator.
-You are welcome to implement or import a more sophisticated symplectic integrator.
+ 4. How does the total mechanical energy (T+V) change over time with different solvers (see below) in these two cases?
 
 ## The Deadline
 
@@ -33,8 +26,11 @@ You are welcome to implement or import a more sophisticated symplectic integrato
 
 ## Program specification:
 
+You will need to compare at least 3 different integrators: One must be symplectic, one must be RK4(5), and the last should be another SciPy integrator.
 
-
+For the symplectic integrator, you will need to write your own.
+The simplest symplectic algorithm is a Verlet integrator.
+As an extension you may want to implement a higher order symplectic integrator.
 
 ### Extensions (a.k.a. challenge questions)
 > [!CAUTION]
@@ -46,8 +42,28 @@ The fast way to accomplish this is with four points in (q,p) space and a method 
 This will miss details as you go to longer time, because the shape may stop being rectangular.
 Instead, create a small meshgrid of (q,p) points and calculate the area of the concave hull that bounds those points.
 
+ 1. How does phase space area (Total Mechanical Energy) evolve in the damped and undamped SHM scenerios?
+ 2. How do different integrators affect this variation in area?
+
 #### Symplectics Deep Dive: Calculation
-Calculate the 
+Similar to the LibreTexts derivation above, demonstrate that your higher order symplectic integrator conserves phase space.
+
+#### Virial Theorem
+Instead of simulating SHM, study one of two multi-particle systems.
+
+ 1. Gravity
+ 2. ball and spring model of a solid
+
+For Gravity, make a function that applies gravitational force between masses.
+Write a function that can handle N particles interacting gravitationally.
+Start the particles with enough energy to get motion and orbits, but not so much that the collection simply explodes.
+
+For the ball and spring model, write a function that applies spring interactions to an array of masses.
+Give the particles enough energy to vibrate, but not so much that they overlap, explode, or disintegrate.
+
+Plot T(t), the kinetic energy of the system over time.
+Compare that to V(t), the total potential energy over time.
+As N increases, what is the relationship between T(t) and V(t)?
 
 ## The Writeup
 
