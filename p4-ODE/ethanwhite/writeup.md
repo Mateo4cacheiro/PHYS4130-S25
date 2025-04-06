@@ -5,15 +5,11 @@
    Term: Spring 2025
 ---
 
-# parts left
-5
-6
-
-### Questions
+# Questions
 
 1. Discretized equations of motion are given by:
 
-$y(t_{i+1})=y(t_{i})+v(t_i)\cdot dt$
+$y(t_{i+1})=y(t_{i})+v(t_i)\cdot dt$ as well as
 $v(t_{i+1})=v(t_{i})+(-g-\beta)\cdot dt$
 
 2. A plot of y(t) with nts = 20, 40, 80, 160 is portrayed below (with the analytic solution):
