@@ -34,9 +34,9 @@ $2a + b/2 + d/2 + 2e = 0$ as well as
 $-4a/3-b/6+d/6+4e/3 = 0$ as well as
 $2a/3+b/24+d/24+2e/3 = 0$
 
-Plugging these in to a matrix, we find that: $a=\frac{1}{12h}$, $b=\frac{-2}{3h}$, $c=0, $d=\frac{2}{3h}$, and $e=\frac{-1}{12h}$. Plugging these back into our original equation, we have that:
+Plugging these in to a matrix, we find that: $a=\frac{1}{12h}$, $b=\frac{-2}{3h}$, $c=0$, $d=\frac{2}{3h}$, and $e=\frac{-1}{12h}$. Plugging these back into our original equation, we have that:
 
-$f'(x)=\frac{f(x-2h)-8f(x-h)+8f(x+h)-f(x+2h)}{12h}
+$f'(x)=\frac{f(x-2h)-8f(x-h)+8f(x+h)-f(x+2h)}{12h}$ (our five point stencil approximation)
 
 3.2b) The error is proportional to $h^4$ since the line is.. relatively straight. Solving for the slope of the line yields $m \approx 0.89$, which is pretty close. After h goes lower than 0.001, the error looks atrocious (since the log of 1/$h^4$ would be so close to 0 the log would mess up). But otherwise it is pretty close.
 
