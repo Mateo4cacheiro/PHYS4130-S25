@@ -25,7 +25,7 @@ def threepoint(x,h):
 def fivepoint(x,h):
 	p = (f(x-2*h)-8*f(x-h)+8*f(x+h)-f(x+2*h))/(12*h)
 	e = 0
-	return p, e
+	return p
 
 def secondderiv(x,h):
 	p = (f(x+h)-2*f(x)+f(x-h))/(h*h)
@@ -68,15 +68,20 @@ def loglogh2(x):
 	print("Slope H2: ",slope)
 	return
 
-# Homework 3.2
+# Homework 3.2 (third derivative w/ https://math.stackexchange.com/questions/1380848/looking-for-finite-difference-approximations-past-the-fourth-derivative)
+# but the 4th derivative function gives all 'nan' results so I was inspired by Mateo's method of trueval - approx
 def loglogh4(x):
-	hvals = 4*np.log([10**(-i) for i in range(1,6)])
-	evals = 0
+	hvals = 4*np.log([10**(-i) for i in range(1,4)])
+	vals = [fivepoint(x,10**(-i)) for i in range(1,4)]
+	evals = np.log([abs(-0.905988915214-vals[i]) for i in range(0,3)])
+#	evals = np.log([f(x+2*10**(-i))-4*f(x+10**(-i))+6*f(x)-4*f(x-10**(-i))+2*f(x-2*(10**(-i)))/((10**(-i))**4) for i in range(1,6)])
 
 	plt.plot(hvals,evals)
+	plt.show(block=False)
 
-	slope = (evals[4]-evals[0])/(hvals[4]-hvals[0])
+	slope = (evals[2]-evals[0])/(hvals[2]-hvals[0])
 	print("Slope H4: ",slope)
+
 # Homework 3.3
 def secondderivgraph(h):
 	a, b, p, i = 2, 5, 2, 0
@@ -105,12 +110,13 @@ fval,ef = forward(x,h), 1
 bval,eb = backward(x,h)
 cval,ec = central(x,h)
 tval,et = threepoint(x,h)
-five,efive = fivepoint(x,h)
+five = fivepoint(x,h)
 second = secondderiv(x,h)
 
-print("forward: ",fval,"\nforward error: ",ef,"\n\nbackward: ",bval,"\nbackward error: ",eb,"\n\ncentral: ",cval,"\ncentral error: ",ec,"\n\nthree point: ",tval,"\nthree point error: ",et,"\n\nfive point: ",five,"\nfive point error: ",efive,"\n\nsecond: ",second)
+print("forward: ",fval,"\nforward error: ",ef,"\n\nbackward: ",bval,"\nbackward error: ",eb,"\n\ncentral: ",cval,"\ncentral error: ",ec,"\n\nthree point: ",tval,"\nthree point error: ",et,"\n\nfive point: ",five,"\n\nsecond: ",second)
 
 #loglogh(x)
-#errorbreak(x)
 #loglogh2(x)
-secondderivgraph(h)
+loglogh4(x)
+#errorbreak(x)
+#secondderivgraph(h)
