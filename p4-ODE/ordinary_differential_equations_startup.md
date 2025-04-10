@@ -22,7 +22,7 @@ Feel free to compare [SciPy's integrators](https://docs.scipy.org/doc/scipy/refe
 ## The Deadline
 
 > [!IMPORTANT]
-> April 15
+> April 22
 
 ## Program specification:
 
@@ -64,6 +64,7 @@ Give the particles enough energy to vibrate, but not so much that they overlap, 
 Plot T(t), the kinetic energy of the system over time.
 Compare that to V(t), the total potential energy over time.
 As N increases, what is the relationship between T(t) and V(t)?
+Specifically, what is $`\langle T\rangle`$ and $`\langle V\rangle`$?
 
 ## The Writeup
 
