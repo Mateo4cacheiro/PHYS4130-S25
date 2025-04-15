@@ -19,16 +19,22 @@ $$
 $$
 
 It is incredibly important to notice that this is not just one equation (even though it is the geodesic equation). Since we are working in 4-dimensional space-time, 
-$$ \mu $$ 
+$$
+\mu 
+$$ 
 can be a value of 0, 1, 2, and 3, as can 
-$$ \alpha $$
+$$
+\alpha 
+$$
 and 
-$$ \beta $$
-. Thus, there are, at first glance, **64 different PDEs**. After looking at the symmetry of the 
+$$
+\beta 
+$$
+. Thus, there are, at first glance, **64 different PDEs**. After looking at the symmetry of the metric (its representation is a diagonal matrix), this equation can reduce SIGNIFICANTLY.
 
 <figure>
   <img src=starlight-bending.jpg>
-  <figcaption> Starlight bending figure.
+  <figcaption> [1] Starlight bending figure.
 </figcaption>
 </figure>
 <p>&nbsp;</p> 
