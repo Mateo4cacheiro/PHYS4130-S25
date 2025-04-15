@@ -18,6 +18,7 @@ $$
 \frac{d^2x^{\mu}}{ds^2}+\Gamma^{\mu}_{\alpha\beta}\frac{dx^\alpha}{ds}\frac{dx^\beta}{ds}=0
 $$
 
+It is incredibly important to notice that this is not just one equation (even though it is the geodesic equation). Since we are working in 4-dimensional space-time, $$ \mu $$ can be a value of 0, 1, 2, and 3, as can $$ \alpha $$ and $$ \beta $$. Thus, there are, at first glance, \mathbf{64 different PDEs}.
 
 # Purpose
 
