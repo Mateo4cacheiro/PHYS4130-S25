@@ -18,19 +18,19 @@ $$
 \frac{d^2x^{\mu}}{ds^2}+\Gamma^{\mu}_{\alpha\beta}\frac{dx^\alpha}{ds}\frac{dx^\beta}{ds}=0
 $$
 
-It is incredibly important to notice that this is not just one equation (even though it is the geodesic equation). Since we are working in 4-dimensional space-time, 
+It is incredibly important to notice that this is not just one equation (even though it is *the* geodesic equation). Since we are working in 4-dimensional spacetime, 
+
 $$
-\mu 
+\mu \in \{0, 1, 2, 3\}
 $$ 
-can be a value of 0, 1, 2, and 3, as can 
+
+and likewise, 
+
 $$
-\alpha 
-$$
-and 
-$$
-\beta 
-$$
-. Thus, there are, at first glance, **64 different PDEs**. After looking at the symmetry of the metric (its representation is a diagonal matrix), this equation can reduce SIGNIFICANTLY.
+\alpha, \beta \in \{0, 1, 2, 3\}.
+$$ 
+
+Thus, there are, at first glance, **64 different PDEs**. However, by examining the symmetry of the metric (specifically, that it is diagonal), the equation reduces significantly.
 
 <figure>
   <img src=starlight-bending.jpg>
