@@ -21,16 +21,21 @@ $$
 It is incredibly important to notice that this is not just one equation (even though it is *the* geodesic equation). Since we are working in 4-dimensional spacetime, 
 
 $$
-\mu \in \{0, 1, 2, 3\}
+\mu, \alpha, beta \in \{0, 1, 2, 3\}
 $$ 
 
-and likewise, 
+Thus, there are, at first glance, **64 different PDEs**. However, by examining the symmetry of the metric (specifically, that it is diagonal), the equation reduces significantly. You may be asking yourself-- "what is 
 
 $$
-\alpha, \beta \in \{0, 1, 2, 3\}.
-$$ 
+\Gamma^{\mu}_{\alpha\beta}
+$$
 
-Thus, there are, at first glance, **64 different PDEs**. However, by examining the symmetry of the metric (specifically, that it is diagonal), the equation reduces significantly.
+?". This symbol, the Christoffel symbol, represents the curvature of spacetime around the 'basis vectors' of space-time itself (coordinates (1, 2, 3) and time (0) and whatnot). This value can be calculated two ways:
+
+$$
+\Gamma^{\mu}_{\alpha \beta} = \frac{\partial^2 x^\gamma}{\partial x^{\alpha} \partial x^{\beta}} \frac{\partial x^{\mu}}{\partial x^\gamma},
+$$
+
 
 <figure>
   <img src=starlight-bending.jpg>
