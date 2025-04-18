@@ -63,6 +63,7 @@ p.ylabel("Position [m]")
 p.ylim(-Pos0-0.1,Pos0+0.1)
 p.title("Position vs. Time")
 p.legend()
+p.savefig('Position_Verlet.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot simple harmonic oscillator's velocity using Verlet
@@ -71,6 +72,7 @@ p.xlabel("Time [s]")
 p.ylabel("Velocity [m/s]")
 p.title("Velocity vs. Time")
 p.legend()
+p.savefig('Velocity_Verlet.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot simple harmonic oscillator in phasespace using Verlet
@@ -79,6 +81,7 @@ p.xlabel("Position [m]")
 p.ylabel("Momentum [kg*m/s]")
 p.title("Position vs. Momentum (Phase space Diagram)")
 p.legend()
+p.savefig('Phasespace_Verlet.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot simple harmonic oscillator's Hamiltonian using Verlet
@@ -88,6 +91,7 @@ p.ylabel("Hamiltonian [J]")
 p.title("Hamiltonian vs. Time")
 p.ylim(0,2*(T_V[0]+U_V[0]))
 p.legend()
+p.savefig('Hamiltonian_Verlet.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #Solve using Scipy integrators
@@ -126,6 +130,7 @@ p.ylabel("Position [m]")
 p.ylim(-Pos0-0.1,Pos0+0.1)
 p.title("Position vs. Time")
 p.legend()
+p.savefig('Position_All.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot simple harmonic oscillator's velocity using RK23
@@ -138,6 +143,7 @@ p.xlabel("Time [s]")
 p.ylabel("Velocity [m/s]")
 p.title("Velocity vs. Time")
 p.legend()
+p.savefig('Velocity_All.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot simple harmonic oscillator in phasespace using RK23
@@ -150,6 +156,7 @@ p.xlabel("Position [m]")
 p.ylabel("Momentum [kg*m/s]")
 p.title("Position vs. Momentum (Phase space Diagram)")
 p.legend()
+p.savefig('Phasespace_All.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot simple harmonic oscillator's Hamiltonian using RK23
@@ -162,7 +169,9 @@ p.xlabel("Time [s]")
 p.ylabel("Hamiltonian [J]")
 p.title("Hamiltonian vs. Time")
 p.legend()
+p.savefig('Hamiltonian_All.png', bbox_inches='tight', pad_inches=0)
 p.show()
+
 #plot position for different dampening ratios using Verlet
 for i in range(0,4):
     c=i
@@ -174,6 +183,7 @@ p.ylabel("x(t)/x(0)")
 p.ylim(-1.1,1.1)
 p.title("Position vs. Time")
 p.legend()
+p.savefig('Dampened_Position_Verlet.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot phasespace for different dampening ratios using Verlet
@@ -187,6 +197,7 @@ p.ylabel("Momentum [kg*m/s]")
 p.ylim(-1.1,1.1)
 p.title("Phasespace")
 p.legend()
+p.savefig('Dampened_Phasespace_Verlet.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
 #plot Hameltonian for different dampening ratios using Verlet
@@ -202,5 +213,6 @@ p.ylabel("Hamiltonian [J]")
 p.ylim(0,(T[0]+U[0])+0.1)
 p.title("Hamiltonian vs. time")
 p.legend()
+p.savefig('Dampend_Hamiltonian_Verlet.png', bbox_inches='tight', pad_inches=0)
 p.show()
 
