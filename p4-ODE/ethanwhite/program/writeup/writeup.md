@@ -27,7 +27,7 @@
 ## Results (different solvers and their respective phase diagrams, hamiltonian plots, and position plots)
 
 <figure align="center">
-  <img src=Images/SolversPositions.png>
+  <img src=Images/SolversPosition.png>
   <figcaption align="center">Plot of Verlet integration, RK4(5), and Adam's ODE methods' position plots, without dampening.</figcaption>
 </figure>
 
@@ -37,7 +37,7 @@
 </figure>
 
 <figure align="center">
-  <img src=Images/SolversPhases.png>
+  <img src=Images/SolversPhase.png>
   <figcaption align="center">Plot of Verlet integration, RK4(5), and Adam's ODE methods' phase space diagrams, without dampening.</figcaption>
 </figure>
 
