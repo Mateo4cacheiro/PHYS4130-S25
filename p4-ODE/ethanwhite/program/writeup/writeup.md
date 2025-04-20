@@ -7,7 +7,7 @@
 # Introduction
 
 
-## Results
+## Results (varying the damping parameter while using our Verlet integrator)
 
 <figure align="center">
   <img src=Images/PositionsB.png>
@@ -24,11 +24,29 @@
   <figcaption align="center">Plot of varying dampening parameters' affect on the phase space diagram, going from 0 to 1.0.</figcaption>
 </figure>
 
+## Results (different solvers and their respective phase diagrams, hamiltonian plots, and position plots)
+
+<figure align="center">
+  <img src=Images/SolversPositions.png>
+  <figcaption align="center">Plot of Verlet integration, RK4(5), and Adam's ODE methods' position plots, without dampening.</figcaption>
+</figure>
+
+<figure align="center">
+  <img src=Images/SolversHamiltonian.png>
+  <figcaption align="center">Plot of Verlet integration, RK4(5), and Adam's ODE methods' hamiltonian plots, without dampening.</figcaption>
+</figure>
+
+<figure align="center">
+  <img src=Images/SolversPhases.png>
+  <figcaption align="center">Plot of Verlet integration, RK4(5), and Adam's ODE methods' phase space diagrams, without dampening.</figcaption>
+</figure>
+
 ## Extensions
 
 ### Attribution
 
 [1] https://docs.scipy.org/doc/scipy/reference/integrate.html (used towards looking at other SciPy integrators)
+
 [2] 
 
 ### Timekeeping
