@@ -18,7 +18,7 @@
   <figcaption align="center">[Figure 1] Plot of varying dampening parameters' affect on position vs time, going from 0 to 1.0. Obviously, as dampening parameter increases, the amplitude of the wave decreases over time faster as well, whereas if there is no dampening, then the amplitude just doesn't decrease (blue wave). </figcaption>
 </figure>
 
-<br>
+<p></p>
 
 <figure align="center">
   <img src=Images/HamiltoniansB.png>
@@ -39,14 +39,14 @@
   <figcaption align="center">[Figure 4] Plot of Verlet integration, RK4(5), and Adam's ODE methods' position plots, without dampening. RK4(5) and the Verlet integrator stayed very close in approximation with eachother, but there was a slight phase shift over a long period of time. The Adams' solver actually increased the amplitude of the wave over long periods of time. </figcaption>
 </figure>
 
-
+<p></p>
 
 <figure align="center">
   <img src=Images/SolversHamiltonian.png>
   <figcaption align="center">[Figure 5] Plot of Verlet integration, RK4(5), and Adam's ODE methods' hamiltonian plots, without dampening. As expected, the Verlet solver method remained constant, so energy was not lost out of the system. The RK4(5) method lost energy slowly (not symplectic). The Adams' method did some crazy, non-sinusoidal, non-linear, non-quadratic funky stuff that I can't really conceptualize. This erratic behaviour is why I chose this solver method-- I thought the resulting phase diagram would be cool. </figcaption>
 </figure>
 
-
+<p></p>
 
 <figure align="center">
   <img src=Images/SolversPhase.png>
