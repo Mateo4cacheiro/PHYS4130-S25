@@ -24,6 +24,7 @@ Ordinary differential equations are one of the most important concepts in physic
         G --> H[Predicts the upcoming position using Stormer's method and kinematic equations]
         G --> J[Updates the current velocity using numerical differentiation]
         J --> H
+        H --> J
         L --> H
         L --> J
         H --> K[Arrays filled completely]
