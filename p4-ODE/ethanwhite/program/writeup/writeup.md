@@ -18,14 +18,14 @@
   <figcaption align="center">[Figure 1] Plot of varying dampening parameters' affect on position vs time, going from 0 to 1.0. Obviously, as dampening parameter increases, the amplitude of the wave decreases over time faster as well, whereas if there is no dampening, then the amplitude just doesn't decrease (blue wave). </figcaption>
 </figure>
 
-
+<br>
 
 <figure align="center">
   <img src=Images/HamiltoniansB.png>
   <figcaption align="center">[Figure 2] Plot of varying dampening parameters' affect on hamiltonian vs time, going from 0 to 1.0. Since the hamiltonian isn't even dependent on the dampening parameter, it's no surprise that energy is lost from the system, so the Hamiltonian is not constant with a non-zero dampening parameter. Ofcourse, with higher dampening parameter, the energy loss is faster. </figcaption>
 </figure>
 
-
+<p></p>
 
 <figure align="center">
   <img src=Images/PhasesB.png>
