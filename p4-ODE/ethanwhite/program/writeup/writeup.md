@@ -25,8 +25,8 @@ Ordinary differential equations are one of the most important concepts in physic
         G --> J[Updates the current velocity uing numerical differentiation]
         H --> K[Arrays filled completely]
         J --> K
-        K --> M[Finding potential energy array from the position array values (1/2 kx^2)]
-        K --> N[Finding kinetic energy array from the velocity array values (1/2 mv^2)]
+        K --> M[Finding potential energy array from the position array values]
+        K --> N[Finding kinetic energy array from the velocity array values]
         M --> P[Calculating the Hamiltonian energy array as Potential array + Kinetic array]
         N --> P
 
