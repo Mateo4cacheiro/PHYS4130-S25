@@ -28,7 +28,6 @@ Ordinary differential equations are one of the most important concepts in physic
         L --> H
         L --> J
         H --> K[Arrays filled completely]
-        J --> H
         K --> M[Finding potential energy array from the position array values]
         K --> N[Finding kinetic energy array from the velocity array values]
         M --> P[Calculating the Hamiltonian energy array as Potential array + Kinetic array]
@@ -38,6 +37,10 @@ Ordinary differential equations are one of the most important concepts in physic
         C --> T
         K --> T
         T --> B
+        B --> R[Plotting]
+        R --> V[Hamiltonian vs. Time]
+        R --> X[Position vs. Time]
+        R --> W[Momentum vs. Position: Phase Diagram]
 
 
 ```
