@@ -15,15 +15,25 @@ Ordinary differential equations are one of the most important concepts in physic
 ```mermaid
     graph TD
         A[Declaring initial conditions] --> B[Verlet function]
-        B --> C[Create array of times] 
+        B --> C[Create array of times] --> L[Finding dt from difference in each timestep] 
         B --> D[Creating array of positions]
         B --> E[Creating array of velocities]
         D --> F[Setting initial conditions]
         E --> F
         F --> G[Looping through every element in array]
+        G --> H[Predicts the upcoming position using Stormer's method and kinematic equations]
+        G --> J[Updates the current velocity uing numerical differentiation]
+        H --> K[Arrays filled completely]
+        J --> K
+        K --> M[Finding potential energy array from the position array values (1/2 kx^2)]
+        K --> N[Finding kinetic energy array from the velocity array values (1/2 mv^2)]
+        M --> P[Calculating the Hamiltonian energy array as Potential array + Kinetic array]
+        N --> P
 
-        Z -- Returns time array, position array, velocity array, Hamiltonian --> B
-        
+        P --> T[Final return values (time, position, velocity, energy)]
+        B --> T
+        H --> T
+        T --> B
 
 
 ```
