@@ -22,17 +22,17 @@ Ordinary differential equations are one of the most important concepts in physic
         E --> F
         F --> G[Looping through every element in array]
         G --> H[Predicts the upcoming position using Stormer's method and kinematic equations]
-        G --> J[Updates the current velocity uing numerical differentiation]
+        G --> J[Updates the current velocity using numerical differentiation]
         H --> K[Arrays filled completely]
-        J --> K
+        J --> H
         K --> M[Finding potential energy array from the position array values]
         K --> N[Finding kinetic energy array from the velocity array values]
         M --> P[Calculating the Hamiltonian energy array as Potential array + Kinetic array]
         N --> P
 
         P --> T[Final return values: time, position, velocity, energy]
-        B --> T
-        H --> T
+        C --> T
+        K --> T
         T --> B
 
 
