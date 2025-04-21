@@ -30,7 +30,7 @@ Ordinary differential equations are one of the most important concepts in physic
         M --> P[Calculating the Hamiltonian energy array as Potential array + Kinetic array]
         N --> P
 
-        P --> T[Final return values (time, position, velocity, energy)]
+        P --> T[Final return values: time, position, velocity, energy]
         B --> T
         H --> T
         T --> B
