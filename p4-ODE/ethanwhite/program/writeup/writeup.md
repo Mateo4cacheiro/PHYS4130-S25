@@ -10,6 +10,23 @@
 
 # Introduction
 
+Ordinary differential equations are one of the most important concepts in physics. It would help, then, to understand how to model these objects computationally. In the previous project 4 notebooks, Euler's method and Runge-Kutta, order 2 (RK2), were explored. In this project, RK4(5) is explored, as well as a linear-multistep algorithm called Adams' backward differentiation formula (Adams-BDF) method. Both of these non-energy-conserving methods were utilized from the SciPy.integrate library. Since, in physics, we also want to conserve energy, symplectic integrators are useful to look at. Verlet integration was explored in this project as well using the Stormer method and some useful numerical differentiation facts. 
+
+```mermaid
+    graph TD
+        A[Declaring initial conditions] --> B[Verlet function]
+        B --> C[Create array of times] 
+        B --> D[Creating array of positions]
+        B --> E[Creating array of velocities]
+        D --> F[Setting initial conditions]
+        E --> F
+        F --> G[Looping through every element in array]
+
+        Z -- Returns time array, position array, velocity array, Hamiltonian --> B
+        
+
+
+```
 
 ## Results (varying the damping parameter while using our Verlet integrator)
 
@@ -59,7 +76,9 @@
 
 [1] https://docs.scipy.org/doc/scipy/reference/integrate.html (used towards looking at other SciPy integrators)
 
-[2] 
+[2] https://scicomp.stackexchange.com/questions/8393/confusion-regarding-the-adam-moulton-and-backwards-differentiation-formula-bdf
+
+[3]
 
 ### Timekeeping
 
