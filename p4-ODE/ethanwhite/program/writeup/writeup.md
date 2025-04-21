@@ -12,6 +12,19 @@
 
 Ordinary differential equations are one of the most important concepts in physics. It would help, then, to understand how to model these objects computationally. In the previous project 4 notebooks, Euler's method and Runge-Kutta, order 2 (RK2), were explored. In this project, RK4(5) is explored, as well as a linear-multistep algorithm called Adams' backward differentiation formula (Adams-BDF) method. Both of these non-energy-conserving methods were utilized from the SciPy.integrate library. Since, in physics, we also want to conserve energy, symplectic integrators are useful to look at. Verlet integration was explored in this project as well using the Stormer method and some useful numerical differentiation facts. 
 
+> [!IMPORTANT]
+> A symplectic integrator preserves energy. This means that the change in the Hamiltonian (total energy) over each time step does not change. You can see if an integrator is symplectic by just plotting the hamiltonian vs time or checking if the resulting phase diagram remains a constant shape over long time periods.
+
+### Verlet Integration
+
+A verlet integration function was created that follows this mermaid diagram using the Stormer method. It is roughly as follows:
+
+$$
+x_{n+1}=2x_n-x_{n-1}+a_n\delta t^2
+$$
+
+where $a_n$ is acceleration at the point $n$. In my program, this acceleration was computed using kinematics and by updating velocities at the point $n$ by computing the upcoming position and previous position and using a numerical differentiation technique at that point to get the velocity.
+
 ```mermaid
     graph TD
         A[Declaring initial conditions] --> B[Verlet function]
@@ -41,8 +54,6 @@ Ordinary differential equations are one of the most important concepts in physic
         R --> V[Hamiltonian vs. Time]
         R --> X[Position vs. Time]
         R --> W[Momentum vs. Position: Phase Diagram]
-
-
 ```
 
 ## Results (varying the damping parameter while using our Verlet integrator)
@@ -94,6 +105,8 @@ Ordinary differential equations are one of the most important concepts in physic
 [1] https://docs.scipy.org/doc/scipy/reference/integrate.html (used towards looking at other SciPy integrators)
 
 [2] https://scicomp.stackexchange.com/questions/8393/confusion-regarding-the-adam-moulton-and-backwards-differentiation-formula-bdf
+
+[3] https://en.wikipedia.org/wiki/Verlet_integration
 
 [3]
 
