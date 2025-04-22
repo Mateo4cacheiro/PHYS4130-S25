@@ -1,10 +1,10 @@
 # Author: Adam Grice
 # Project: Ordinary Differential Equations
-# Date: 04-08-2025
+# Date: 04-22-2025
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import integrate
+from scipy.integrate import odeint
 
 
 def rk4(p0, x0, tmin, tmax, nts):
@@ -47,11 +47,58 @@ def verlet(x0, tmin, tmax, nts):
 
     return x_array, t_array
 
-xv, tv = verlet(2, 0, 50, 100)
-pr, xr, tr = rk4(2, 2, 0, 50, 100)
-plt.plot(tr, pr, 'x:', label = 'momentum rk4')
-plt.plot(tr, xr, '.:', label = 'position rk4')
-plt.plot(tv, xv, '3:', label = 'position verlet')
 
+
+def eqns(state, t):
+    x, v = state
+    dx = v
+    dv = -x
+    return [dx, dv]
+
+t = np.linspace(0, 50, 100, endpoint=False)
+initial = [2, 2]
+
+soln = odeint(eqns, initial, t)
+
+x_scipy = soln[:, 0]
+p_scipy = soln[:, 1]
+
+
+xv, tv = verlet(2, 0, 50, 100)
+
+pr, xr, tr = rk4(2, 2, 0, 50, 100)
+
+
+plt.plot(tr, pr, 'x:', label = 'momentum rk4')
+plt.legend()
+plt.show()
+plt.plot(tr, xr, '.:', label = 'position rk4')
+plt.legend()
+plt.show()
+plt.plot(tv, xv, '3:', label = 'position verlet')
+plt.legend()
+plt.show()
+plt.plot(t, x_scipy, '4:', label='position linear multistep')
+plt.legend()
+plt.show()
+plt.plot(t, p_scipy, '2:', label='momentum linear multistep')
+
+plt.legend()
+plt.show()
+
+Er = (pr**2) + (xr**2)
+Es = (x_scipy**2) + (p_scipy**2)
+plt.plot(tr, Er/2, '.:', label = 'energy rk4')
+plt.legend()
+plt.show()
+plt.plot(t, Es/2, ',:', label = 'energy linear multistep')
+
+plt.legend()
+plt.show()
+
+plt.plot(xr, pr, '.:', label = 'momentum vs. position rk4')
+plt.legend()
+plt.show()
+plt.plot(x_scipy, p_scipy, 'x:', label = 'momentum vs. position linear multistep')
 plt.legend()
 plt.show()
