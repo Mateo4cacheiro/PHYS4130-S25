@@ -23,7 +23,14 @@ $$
 x_{n+1}=2x_n-x_{n-1}+a_n\Delta t^2
 $$
 
-where $a_n$ is acceleration at the point $n$. In my program, this acceleration was computed using kinematics and by updating velocities at the point $n$ by computing the upcoming position and previous position and using a numerical differentiation technique at that point to get the velocity.
+where $a_n$ is acceleration at the point $n$. In my program, this acceleration was computed using Kinematics/Hooke's law (with a dampening parameter $\beta$) and by updating velocities at the point $n$ by computing the upcoming position and previous position and using a numerical differentiation technique at that point to get the velocity:
+
+$$
+\frac{dx}{dt}=\frac{x_{n+1}-x_{n-1}}{2\Delta t}
+\frac{d^2x}{dt^2}=a_n=\frac{-kx-v\beta}{m}
+$$
+
+So, for example, for iteration i = 1, the position at i = 2 will be calculated first from the previous' positions velocity (i = 0) as an input for our acceleration. After the position at i = 2 is calculated, the numerical differentiation technique is deployed for the velocity at the current position i = 1. The loop continues on until every array element is filled.
 
 ```mermaid
     graph TD
