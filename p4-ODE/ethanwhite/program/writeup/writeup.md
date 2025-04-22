@@ -27,6 +27,11 @@ where $a_n$ is acceleration at the point $n$. In my program, this acceleration w
 
 $$
 \frac{dx}{dt}=\frac{x_{n+1}-x_{n-1}}{2\Delta t}
+$$
+
+<p>and, our acceleration term,</p>
+
+$$
 \frac{d^2x}{dt^2}=a_n=\frac{-kx-v\beta}{m}
 $$
 
