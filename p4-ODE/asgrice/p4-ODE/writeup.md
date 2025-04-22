@@ -6,6 +6,19 @@ This project compares three different integrators used to solve a simple (undriv
 
 Plots of momentum vs. time and position vs. time show that the Runge-Kutta method blows up very quickly, likely due to an error in the implementation. The Verlet and odeint methods behave as expected, producing sinusoidal plots. A plot of momentum vs. position using the linear multistep method produces an elliptic plot, as expected for a simple harmonic oscillator in motion. It is expected that the addition of a damping term will reduce the amplitude of oscillations over time. Due to time constraints this has not been implemented. All of these solvers show that the total mechanical energy grows over time.
 
+
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/position_rk4.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/position_verlet.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/position_lin_multi.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/momentum_rk4.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/momentum_lin_multi.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/energy_rk4.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/energy_lin_multi.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/phase_rk4.png)
+![](https://github.com/asgrice/PHYS4130-S25/blob/main/p4-ODE/asgrice/p4-ODE/phase_lin_multi.png)
+
+
+
 ## Attribution
 I used wikipedia and docs.scipy.org.
 
