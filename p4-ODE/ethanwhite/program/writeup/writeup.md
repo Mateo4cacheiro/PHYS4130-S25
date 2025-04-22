@@ -20,7 +20,7 @@ Ordinary differential equations are one of the most important concepts in physic
 A verlet integration function was created that follows this mermaid diagram using the Stormer method. It is roughly as follows:
 
 $$
-x_{n+1}=2x_n-x_{n-1}+a_n\delta t^2
+x_{n+1}=2x_n-x_{n-1}+a_n\Delta t^2
 $$
 
 where $a_n$ is acceleration at the point $n$. In my program, this acceleration was computed using kinematics and by updating velocities at the point $n$ by computing the upcoming position and previous position and using a numerical differentiation technique at that point to get the velocity.
@@ -102,13 +102,15 @@ where $a_n$ is acceleration at the point $n$. In my program, this acceleration w
 
 ### Attribution
 
-[1] https://docs.scipy.org/doc/scipy/reference/integrate.html (used towards looking at other SciPy integrators)
+[1] I did look at Mateo's code when I got stuck on my ODE function for the RK4(5) since I didn't know how the return values worked. 
 
 [2] https://scicomp.stackexchange.com/questions/8393/confusion-regarding-the-adam-moulton-and-backwards-differentiation-formula-bdf
 
 [3] https://en.wikipedia.org/wiki/Verlet_integration
 
-[3]
+[4] https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html
+
+[5] https://docs.scipy.org/doc/scipy/reference/integrate.html (used towards looking at other SciPy integrators)
 
 ### Timekeeping
 
