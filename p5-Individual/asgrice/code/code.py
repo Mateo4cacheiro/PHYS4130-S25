@@ -6,7 +6,8 @@ from skfem import *
 from skfem.models.poisson import unit_load
 from skfem.helpers import dd, ddot, trace, eye
 import numpy as np
-import matplotlib.animation as animation
+from skfem.visuals.matplotlib import draw, plot
+import matplotlib.pyplot as plt
 
 # m = (MeshTri
 #      .init_symmetric()
@@ -39,30 +40,41 @@ def bilinf(u, v, _):
 @LinearForm
 def load(v, w):
     x, y =  w.x
-    return v * (np.sin(np.pi * np.sqrt((x**2) + (y**2))))
+    return v * (np.sin(np.pi * y))
 
 K = bilinf.assemble(basis)
 f = load.assemble(basis)
 
 
 
-D = basis.get_dofs()
+D = basis.get_dofs().all()
 
 
 
 x = solve(*condense(K, f, D=D))
 
 
-def visualize():
-    from skfem.visuals.matplotlib import draw, plot
-    ax = draw(m)
-    return plot(basis,
-                x,
-                ax=ax,
-                shading='gouraud',
-                colorbar=True,
-                nrefs=2)
+# def visualize():
+#     from skfem.visuals.matplotlib import draw, plot
+#     ax = draw(m)
+#     return plot(basis,
+#                 x,
+#                 ax=ax,
+#                 shading='gouraud',
+#                 colorbar=True,
+#                 nrefs=2)
 
-if __name__ == "__main__":
-    visualize().show()
+# if __name__ == "__main__":
+#     visualize().show()
+
+fig, ax = plt.subplots(figsize=(6, 5))  
+draw(basis.mesh, ax=ax)
+plot(basis, x, ax=ax, shading='gouraud', colorbar = True)
+
+ax.set_xlabel('x [m]')   
+ax.set_ylabel('y [m]')   
+ax.set_title('Plate Deflection')  
+ax.axis('equal')         
+
+plt.show()
     
