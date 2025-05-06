@@ -1,46 +1,66 @@
 from skfem import *
-import matplotlib.pyplot as plt
+from skfem.models.poisson import unit_load
+from skfem.helpers import dd, ddot, trace, eye
 import numpy as np
+from skfem.visuals.matplotlib import plot, draw
+import matplotlib.pyplot as plt
 
-import skfem
-from skfem.helpers import dot, grad
-from skfem import *
-import skfem.visuals.matplotlib
+m = (MeshTri
+     .init_symmetric()
+     .refined(3)
+     .with_defaults())
+basis = Basis(m, ElementTriMorley())
 
-m = MeshLine().refined(3).with_boundaries({"left": lambda x: x[0] == 0})
-#m = m.scaled([20.0])
-e = ElementLineHermite()
-basis = Basis(m, e)
+d = 0.1
+E = 200e9
+nu = 0.3
+
+
+def C(T):
+    return E / (1 + nu) * (T + nu / (1 - nu) * eye(trace(T), 2))
+
 
 @BilinearForm
-def bilinf(u, v, w):
-    from skfem.helpers import dd, ddot
-    return ddot(dd(u), dd(v))
+def bilinf(u, v, _):
+    return d ** 3 / 12.0 * ddot(C(dd(u)), dd(v))
+
 
 @LinearForm
-def linf(v, w):
-    return 1.0 * v
+def load(v, _):
+    return 1e6 * v
 
-A = asm(bilinf, basis)
-f = asm(linf, basis)
 
-D = basis.get_dofs("left")
+K = bilinf.assemble(basis)
+f = load.assemble(basis)
 
-x = solve(*condense(A, f, D=D))
+D = np.hstack((
+    basis.get_dofs("left"),
+    basis.get_dofs({"right", "top"}).all("u"),
+))
+x = solve(*condense(K, f, D=D))
 
-# compare to analytical solution
-err = max(x[basis.nodal_dofs[0]]) - 1. / 8.
-print(err)
 
-skfem.visuals.matplotlib.plot(basis, x)
+
+# def visualize():
+#     from skfem.visuals.matplotlib import draw, plot
+#     ax = draw(m)
+#     return plot(basis,
+#                 x,
+#                 ax=ax,
+#                 shading='gouraud',
+#                 colorbar=True,
+#                 nrefs=2)
+
+# if __name__ == "__main__":
+#     visualize().show()
+
+fig, ax = plt.subplots(figsize=(6, 5))  
+draw(basis.mesh, ax=ax)
+plot(basis, x, ax=ax, shading='gouraud', colorbar = True)
+
+ax.set_xlabel('x [m]')   
+ax.set_ylabel('y [m]')   
+ax.set_title('Plate Deflection')  
+ax.axis('equal')         
+
 plt.show()
-
-# if __name__ == '__main__':
-
-#     from os.path import splitext
-#     from sys import argv
-#     name = splitext(argv[0])[0]
-
-#     from skfem.visuals.matplotlib import *
-#     plot(basis, x, Nrefs=3)
-#     savefig(f'{name}_solution.png')
