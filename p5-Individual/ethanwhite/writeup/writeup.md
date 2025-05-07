@@ -5,14 +5,14 @@ The geodesic equation in General Relativity is a tool which can be used towards 
 $$
 g_{\mu\nu}=
 \begin{pmatrix}
--1+\frac{2GM}{r} & 0 & 0 & 0 \\
-0 & 1+\frac{2GM}{r} & 0 & 0 \\
-0 & 0 & 1+\frac{2GM}{r} & 0 \\
-0 & 0 & 0 & 1+\frac{2GM}{r}
+-1+\frac{2GM}{c^2r} & 0 & 0 & 0 \\
+0 & (1-\frac{2GM}{c^2r})^{-1} & 0 & 0 \\
+0 & 0 & (1-\frac{2GM}{c^2r})^{-1} & 0 \\
+0 & 0 & 0 & (1-\frac{2GM}{c^2r})^{-1}
 \end{pmatrix}=
 \begin{pmatrix}
 -1+\frac{2GM}{r} & 0 & 0 & 0 \\
-0 & 1+\frac{2GM}{r} & 0 & 0 \\
+0 & (1-\frac{2GM}{c^2r})^{-1} & 0 & 0 \\
 0 & 0 & r^2 & 0 \\
 0 & 0 & 0 & r^2\sin^2\theta
 \end{pmatrix}
@@ -49,14 +49,55 @@ This phenomenon is particularly interesting because in Newtonian physics, the re
 
 The purpose of this project is to combine both general relativity and computational physics by computing the exact angle of starlight bend, and to compare this value with Newtonian predictions. 
 
-# Procedure
+# Procedure / Algorithm
 
 > [!IMPORTANT]
-> This is the only way that I could figure out a program that would replicate the starlight bend of ~1.75 arcseconds. I've added an additional section titled "Alternative Methods" that discusses the other ways I tried to computationally model the phenomenon, but in the end, this is the code that actually worked. :(
+> This is the only way that I could figure out a program that would replicate the starlight bend of ~1.75 arcseconds. It feels wrong to use because, in the end, all I added was a correction term for our acceleration (which did get the right answer).
 
-For this program to be efficient, it may be good for us to briefly cover how the Newtonian angle calculation goes, and why it's wrong by a factor of two compared to the GR approach. After this brief calculation, I will explain the code/relevant algorithms.
+For this program to be efficient, it may be good for us to briefly cover how the Newtonian angle calculation goes, and why it's wrong by a factor of two compared to the GR approach. After this brief calculation, I will calculate the GR deflection angle. Finally, I will go through the THICK derivation of the 'correction factor' approach I implemented to solving my problem. Then, I will explain relevant algorithms/the code itself.
 
-# Results
+## Newtonian Deflection Angle
+
+## Relativity Deflection Angle
+
+## Photon Trajectory Derivation
+
+We start with our Schwarzchild line element:
+
+$$
+ds^2=g_{\alpha\beta}dx^{\alpha}dx^{\beta}=-(1-\frac{2GM}{c^2r})c^2dt^2+(1-\frac{2GM}{c^2r})^{-1}dr^2+r^2d\theta^2+r^2\sin^2\theta d\phi^2
+$$
+
+Now, since we will be working with a photon, $ds^2=0$. Furthermore, since this is a symmetric sort of situation, we only need to work in the $\theta=\frac{\pi}{2}$ plane, and thus d$\theta=0$. We can choose $\lambda$ to be our affine parameter. Putting all of this together, our line element becomes:
+
+$$
+0=-(1-\frac{2GM}{c^2r})c^2(\frac{dt}{d\lambda})^2+(1-\frac{2GM}{c^2r})^{-1}(\frac{dr}{d\lambda})^2+(r\frac{d\phi}{d\lambda})^2
+$$
+
+It is VERY useful to use (exploit) conserved quantities, particularly energy and angular momentum, which in our case are defined by:
+
+$$
+E = (1-\frac{2GM}{c^2r})c^2(\frac{dt}{d\lambda})
+L = r^2\frac{d\phi}{d\lambda}
+$$
+
+Substituting these values into our null condition line element, we get that:
+
+$$
+0=-(1-\frac{2GM}{c^2r})^{-1}\frac{E^2}{c^2}+1-\frac{2GM}{c^2r})^{-1}(\frac{dr}{d\lambda})^2+\frac{L^2}{r^2}
+$$
+
+Multiplying through by $-(1-\frac{2GM}{c^2r})^{-1}$, we get that, after rearranging and solving for $\frac{dr}{d\lambda}$:
+
+$$
+(\frac{dr}{d\lambda})^2=\frac{E^2}{c^2}-(1-\frac{2GM}{c^2r})\frac{L^2}{r^2}
+$$
+
+Now, we need to make a substitution of $u=1/r$, which leads to $\frac{du}{d\lambda}=\frac{-1}{r^2}\frac{du}{d\lambda}$.
+
+## Relevant Algorithms
+
+# Results / Discussion
 
 # Project Goals (submitted Apr 24th)
 
