@@ -5,6 +5,8 @@ import numpy as np
 from skfem.visuals.matplotlib import plot, draw
 import matplotlib.pyplot as plt
 
+# This code is ripped from the example code
+
 m = (MeshTri
      .init_symmetric()
      .refined(3)
@@ -57,6 +59,10 @@ x = solve(*condense(K, f, D=D))
 fig, ax = plt.subplots(figsize=(6, 5))  
 draw(basis.mesh, ax=ax)
 plot(basis, x, ax=ax, shading='gouraud', colorbar = True)
+
+plt.subplots(figsize=(5,5))
+draw(m, ax=plt.gca())
+plt.show()
 
 ax.set_xlabel('x [m]')   
 ax.set_ylabel('y [m]')   
