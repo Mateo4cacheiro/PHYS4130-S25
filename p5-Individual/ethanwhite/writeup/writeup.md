@@ -65,7 +65,7 @@ For this program to be efficient, it may be good for us to briefly cover how the
 We start with our Schwarzchild line element:
 
 $$
-ds^2=g_{\alpha\beta}dx^{\alpha}dx^{\beta}=-(1-\frac{2GM}{c^2r}) c^2dt^2+\(1-\frac{2GM}{c^2r}\) ^{-1}dr^2+r^2d\theta^2+r^2\sin^2\theta d\phi^2
+ds^2=g_{\alpha\beta}dx^{\alpha}dx^{\beta}=-(1-\frac{2GM}{c^2r}) c^2dt^2+(1-\frac{2GM}{c^2r}) ^{-1}dr^2+r^2d\theta^2+r^2\sin^2\theta d\phi^2
 $$
 
 Now, since we will be working with a photon, $ds^2=0$. Furthermore, since this is a symmetric sort of situation, we only need to work in the $\theta=\frac{\pi}{2}$ plane, and thus d$\theta=0$. We can choose $\lambda$ to be our affine parameter. Putting all of this together, our line element becomes:
@@ -93,7 +93,25 @@ $$
 (\frac{dr}{d\lambda})^2=\frac{E^2}{c^2}-(1-\frac{2GM}{c^2r})\frac{L^2}{r^2}
 $$
 
-Now, we need to make a substitution of $u=1/r$, which leads to $\frac{du}{d\lambda}=\frac{-1}{r^2}\frac{du}{d\lambda}$.
+Now, we need to make a substitution of $u=1/r$, which leads to $\frac{du}{d\lambda}=\frac{-1}{r^2}\frac{du}{d\lambda}$. Also, we must reparameterize and have $\phi$ be our independent variable. Then, by the Chain rule, we have that $\frac{dr}{d\lambda}=\frac{L}{r^2}\frac{dr}{d\phi}. Then, expressing our equation in terms of u-stuff, we have that:
+
+$$
+(\frac{du}{d\phi})^2=\frac{1}{L^2}(\frac{E^2}{c^2}-L^2u^2+\frac{2GML^2}{c^2}u^3)
+$$
+
+Now, if we differentiate both sides with respect to $\phi$ and use chain rule again, we have that:
+
+$$
+2\frac{du}{d\phi}\frac{d^2u}{d\phi^2}=-2u\frac{du}{d\phi}+\frac{6GM}{c^2}u^2\frac{du}{d\phi}
+$$
+
+which implies that, after dividing by 2 and $\frac{du}{d\phi}$, that we have our really important equation that defines our photon geodesic:
+
+$$
+\frac{d^2u}{d\phi^2}=-u+\frac{3GM}{c^2}u^2
+$$
+
+Since we are comparing to the Newtonian angle, I want to work in Cartesian coordinates. Thus, we can sort of bend this equation to fit.
 
 ## Relevant Algorithms
 
