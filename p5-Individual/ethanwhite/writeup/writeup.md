@@ -127,7 +127,20 @@ $$
 \frac{d^2u}{d\phi^2}+u=\frac{3GM}{c^2}u^2
 $$
 
-Let's look at this equation. The left hand side, with the power of foresight, actually describes the acceleration of particles inwards.
+Let's look at this equation. The left hand side represents the central acceleration of particles inwards in Newtonian gravity. The right hand side is a 'correction factor' term that spawns from the GR approach. From 1PN (Post-Newtonian) approximation, we have that our GR acceleration term has an additional factor of $v_r^2$ on it, so our total acceleration is determined by:
+
+$$
+a=a_{newtonian}(1+\delta_{relativistic correction factor}v^2). 
+$$
+
+Since we want to look at radial velocity, we have that, since $r\cdot v_r = rv_r$, $v_r = \frac{r\cdot v_r}{r}$. Then, since we know acceleration in Newtonian gravity is just $a=-\frac{GM}{r^2}$, we have our FULL acceleration formula is:
+
+$$
+\mathbf{a}=-\frac{GM}{r^2}(1+\frac{3GM(r\cdot v_r)^2}{c^2r^2})
+$$
+
+We can dot this into the $a_x$ or $a_y$ directions just by scaling by $\frac{x}{r}$ or ${y}{r}$ (just a cosine or sine). Thus, we have, in the end, derived a useful correction factor using 1PN approximations and the line element of the Schwarzchild geodesic.
+
 
 ## Relevant Algorithms
 
