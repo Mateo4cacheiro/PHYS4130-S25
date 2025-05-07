@@ -134,7 +134,7 @@ $$
 2\frac{du}{d\phi}\frac{d^2u}{d\phi^2}=-2u\frac{du}{d\phi}+\frac{6GM}{c^2}u^2\frac{du}{d\phi}
 $$
 
-which implies that, after dividing by 2 and $\frac{du}{d\phi}$, that we have our really important equation that defines our photon geodesic:
+which implies that, after dividing by 2 and $\frac{du}{d\phi}$, that we have our really important equation that defines our photon geodesic (1):
 
 $$
 \frac{d^2u}{d\phi^2}+u=\frac{3GM}{c^2}u^2
@@ -175,7 +175,23 @@ The following mermaid diagram helps explain exactly what I did:
   M --> X[Plotting the photon trajectory]
 ``` 
 
-The only major difference between the two functions that calculate the trajectories is the correction factor within the actual ODEs themselves. Otherwise, they are pretty much the same function.
+The only major difference between the two functions that calculate the trajectories is the correction factor within the actual ODEs themselves. Otherwise, they are pretty much the same function. From [2], one could use RK4 on equation (1) (the one on the photon geodesics, with u($\phi$). It would look like, with $\Delta\phi$ as our step size:
+
+$$
+k_1=\frac{d^2u}{d\phi^2}(u)
+k_2=\frac{d^2u}{d\phi^2}(u+\frac{\Delta\phi}{2}\frac{du}{d\phi})
+k_3=\frac{d^2u}{d\phi^2}(u+\frac{\Delta\phi}{2}\frac{du}{d\phi}+\frac{\Delta\phi^2}{4}k_1)
+k_4=\frac{d^2u}{d\phi^2}(u+\Delta\phi\frac{du}{d\phi}+\frac{\Delta\phi^2}{2}k_2)
+$$
+
+The values at the incoming steps are described by:
+
+$$
+\frac{du}{d\phi}(\phi+\Delta\phi)=\frac{du}{d\phi}+\frac{\Delta\phi}{6}(k_1+2k_2+2k_3+k_4)
+u(\phi+\Delta\phi)=u(\phi)+\Delta\phi\frac{du}{d\phi}(\phi)+\frac{\Delta\phi^2}{6}(k_1+k_2+k_3)
+$$
+
+I believe many of these values could be determined through numerical differentiation techniques. But implementing this RK4 algorithm into real practice looks terrifying and I did not have time to tame that beast. 
 
 # Results / Discussion
 
