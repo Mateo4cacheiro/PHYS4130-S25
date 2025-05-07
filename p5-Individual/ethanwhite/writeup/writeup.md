@@ -203,7 +203,8 @@ $$
 u(\phi+\Delta\phi)=u(\phi)+\Delta\phi\frac{du}{d\phi}(\phi)+\frac{\Delta\phi^2}{6}(k_1+k_2+k_3)
 $$
 
-I believe many of these values could be determined through numerical differentiation techniques. But implementing this RK4 algorithm into real practice looks terrifying and I did not have time to tame that beast. 
+> [!CAUTION]
+> I believe many of these values could be determined through numerical differentiation techniques. But implementing this RK4 algorithm into real practice looks terrifying and I did not have time to tame that beast. 
 
 # Results / Discussion
 
