@@ -127,10 +127,10 @@ $$
 \frac{d^2u}{d\phi^2}+u=\frac{3GM}{c^2}u^2
 $$
 
-Let's look at this equation. The left hand side represents the central acceleration of particles inwards in Newtonian gravity. The right hand side is a 'correction factor' term that spawns from the GR approach. From 1PN (Post-Newtonian) approximation, we have that our GR acceleration term has an additional factor of $v_r^2$ on it, so our total acceleration is determined by:
+Let's look at this equation. The left hand side represents the central acceleration of particles inwards in Newtonian gravity. The right hand side is a 'correction factor' term that spawns from the GR approach. From 1PN (Post-Newtonian) approximation, we have that our GR acceleration term has an additional factor of $v_r^2$ on it, so our total acceleration is determined by (with $\delta$ representing the correction factor):
 
 $$
-a=a_{newtonian}(1+\delta_{relativistic correction factor}v^2). 
+a=a_{newtonian}(1+\delta_{rcf}v^2). 
 $$
 
 Since we want to look at radial velocity, we have that, since $r\cdot v_r = rv_r$, $v_r = \frac{r\cdot v_r}{r}$. Then, since we know acceleration in Newtonian gravity is just $a=-\frac{GM}{r^2}$, we have our FULL acceleration formula is:
