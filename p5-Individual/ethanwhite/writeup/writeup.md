@@ -1,9 +1,12 @@
+
+
 ---
     Author: Ethan White
     Project: Project 5, Starlight Bending
     Date: 5/7/2025
     Class: PHYS 4130, General Relativity Spring 2025
 ---
+
 
 # Introduction
 
