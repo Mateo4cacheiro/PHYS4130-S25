@@ -1,3 +1,10 @@
+---
+    Author: Ethan White
+    Project: Project 5, Starlight Bending
+    Date: 5/7/2025
+    Class: PHYS 4130, General Relativity Spring 2025
+---
+
 # Introduction
 
 The geodesic equation in General Relativity is a tool which can be used towards plotting geodesics (straight lines on a curved space, like spacetime) of particles around a gravitational source with a given metric. The given metric that we will be working with is the spherical polar version of the linearized Schwarzschild weak field limit metric. It can be expressed as the following matrix (but it is a tensor, not a matrix, just to be clear):
@@ -33,6 +40,9 @@ $$
 $$
 
 It is most useful to look at the first equation with our metric, since everything can be calculated by hand pretty easily-ish.
+
+> [!NOTE]
+> In the end, I did not use the geodesic equations to actually solve for anything. I used a line element method and looked at conserved quantities. But, I wanted to keep this little geodesic equation explanation in here since it took a long time to type and I am proud of it and I feel like my classmates may learn something from it. 
 
 <figure>
   <img src=starlight-bending.jpg>
@@ -144,7 +154,36 @@ We can dot this into the $a_x$ or $a_y$ directions just by scaling by $\frac{x}{
 
 ## Relevant Algorithms
 
+The following mermaid diagram helps explain exactly what I did:
+
+```mermaid
+  graph TD
+  A[Declaring initial conditions] --> B[Calling functions]
+  B --> C[Newtonian function]
+  C --> E[Creates timing array]
+  E --> F[Solves using solve_ivp library and 'typical' Newtonian gravity ODE]
+  F --> G[Calculates deflection angle from resultant final velocity vectors]
+  G --> X[Plotting the photon trajectory]
+
+  B --> D[Relativity function]
+  D --> K[Creates timing array]
+  K --> L[Solves using solve_ivp library and 2nd-order 1PN-acceleration ODE]
+  L --> M[Calculates deflection angle from resultant final velocity vectors]
+  M --> X[Plotting the photon trajectory]
+``` 
+
+The only major difference between the two functions that calculate the trajectories is the correction factor within the actual ODEs themselves. Otherwise, they are pretty much the same function.
+
 # Results / Discussion
+
+<figure>
+  <img src=figure.jpg>
+  <figcaption> [1] Graphic of the photon path trajectories. It isn't that helpful since they overlap becaues the distances are massive LOL. But, numerically, they are correct.
+</figcaption>
+</figure>
+<p>&nbsp;</p> 
+
+From the graph
 
 # Project Goals (submitted Apr 24th)
 
