@@ -65,7 +65,7 @@ For this program to be efficient, it may be good for us to briefly cover how the
 We start with our Schwarzchild line element:
 
 $$
-ds^2=g_{\alpha\beta}dx^{\alpha}dx^{\beta}=-\left 1-\frac{2GM}{c^2r}\right c^2dt^2+\left 1-\frac{2GM}{c^2r}\right ^{-1}dr^2+r^2d\theta^2+r^2\sin^2\theta d\phi^2
+ds^2=g_{\alpha\beta}dx^{\alpha}dx^{\beta}=-(1-\frac{2GM}{c^2r}) c^2dt^2+\(1-\frac{2GM}{c^2r}\) ^{-1}dr^2+r^2d\theta^2+r^2\sin^2\theta d\phi^2
 $$
 
 Now, since we will be working with a photon, $ds^2=0$. Furthermore, since this is a symmetric sort of situation, we only need to work in the $\theta=\frac{\pi}{2}$ plane, and thus d$\theta=0$. We can choose $\lambda$ to be our affine parameter. Putting all of this together, our line element becomes:
