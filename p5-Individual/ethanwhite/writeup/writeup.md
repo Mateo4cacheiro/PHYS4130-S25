@@ -149,7 +149,7 @@ $$
 Since we want to look at radial velocity, we have that, since $r\cdot v_r = rv_r$, $v_r = \frac{r\cdot v_r}{r}$. Then, since we know acceleration in Newtonian gravity is just $a=-\frac{GM}{r^2}$, we have our FULL acceleration formula is:
 
 $$
-\mathbf{a}=-\frac{GM}{r^2}(1+\frac{3GM(r\cdot v_r)^2}{c^2r^2})
+\mathbf{a}=-\frac{GM}{r^2}(1+\frac{3(r\cdot v_r)^2}{c^2r^2})
 $$
 
 We can dot this into the $a_x$ or $a_y$ directions just by scaling by $\frac{x}{r}$ or ${y}{r}$ (just a cosine or sine). Thus, we have, in the end, derived a useful correction factor using 1PN approximations and the line element of the Schwarzchild geodesic.
@@ -186,7 +186,40 @@ The only major difference between the two functions that calculate the trajector
 </figure>
 <p>&nbsp;</p> 
 
-From the graph
+In the end, the actual results of the correction factor (and if it was there or not) actually changed my results significantly. By a factor of exactly two. Just like Einstein predicted. So, I would say that this program was a success, as I calculated a deflection angle through numerical methods that matches analytical calculation and actual, observable experimental data. 
+
+The hardest part of this program was figuring out how to actually compute the geodesic itself. And then transform it into Cartesian coordinates (since I wanted to do a displacement of making it skim the surface of the sun). The coding was not bad at all.
+
+
+### Attribution
+
+[1] https://en.wikipedia.org/wiki/Gravitational_lens
+
+[2] https://en.wikipedia.org/wiki/Schwarzschild_geodesics
+
+[3] https://en.wikipedia.org/wiki/Post-Newtonian_expansion
+
+[4] https://galileo-unbound.blog/tag/geodesic-equation/
+
+[5] https://en.wikipedia.org/wiki/Eddington_experiment
+
+[6] Dr. Holley's Lecture Notes from General Relativity, Lecture 17
+
+Surprisingly, there weren't many sources that were dedicated to my problem, especially at a starlight-bendy level. 
+
+### Timekeeping
+
+  I spent probably about 30 hours on this project. This was extremely difficult as I had several exams (20 credit hours :(..) and I actually got deathly sick the Sunday morning before finals even started (which is when I started doing most of the project). Most of the time was spent in literature review.
+
+### Languages, Libraries, and Lessons Learned
+
+1. What language did you use for your submission? Is it the same one you started using? If not, why'd you change?
+
+  I, once again, prioritized using Python.
+  
+2. What libraries did you use in your submission? Were any of them remarkable? Great to use, super annoying to use, etc?
+
+  I used the Python libraries numpy for array things, matplotlib.pyplot for plotting, and the scipyintegrate library for the solve_ivp function (to solve my DEs).
 
 # Project Goals (submitted Apr 24th)
 
