@@ -180,7 +180,7 @@ The only major difference between the two functions that calculate the trajector
 # Results / Discussion
 
 <figure>
-  <img src=Figure_1.jpg>
+  <img src=Figure_1.png>
   <figcaption> [1] Graphic of the photon path trajectories. It isn't that helpful since they overlap becaues the distances are massive LOL. But, numerically, they are correct.
 </figcaption>
 </figure>
