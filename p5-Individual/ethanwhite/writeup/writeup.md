@@ -58,7 +58,23 @@ For this program to be efficient, it may be good for us to briefly cover how the
 
 ## Newtonian Deflection Angle
 
+I do not have time to write all of this down, but the final answer through a Newtonian calculation is:
+
+$$
+\delta\theta=\frac{2GM}{c^2b} 
+$$
+
+where b is the impact parameter (for grazing the sun's surface, b is the radius of the sun, so substituting that into the equation yields us the numerical value of 0.86 arcseconds.
+
 ## Relativity Deflection Angle
+
+This derivation uses a lot more work than the previous one, and for the sake of time, I will just claim that (with b as our impact parameter), our deflection angle is doubled to 1.72 arcseconds:
+
+$$
+\delta\theta=\frac{4GM}{c^2b}
+$$
+
+This is the experimental value Eddington found in 1919!
 
 ## Photon Trajectory Derivation
 
@@ -93,7 +109,7 @@ $$
 (\frac{dr}{d\lambda})^2=\frac{E^2}{c^2}-(1-\frac{2GM}{c^2r})\frac{L^2}{r^2}
 $$
 
-Now, we need to make a substitution of $u=1/r$, which leads to $\frac{du}{d\lambda}=\frac{-1}{r^2}\frac{du}{d\lambda}$. Also, we must reparameterize and have $\phi$ be our independent variable. Then, by the Chain rule, we have that $\frac{dr}{d\lambda}=\frac{L}{r^2}\frac{dr}{d\phi}. Then, expressing our equation in terms of u-stuff, we have that:
+Now, we need to make a substitution of $u=1/r$, which leads to $\frac{du}{d\lambda}=\frac{-1}{r^2}\frac{du}{d\lambda}$. Also, we must reparameterize and have $\phi$ be our independent variable. Then, by the Chain rule, we have that $\frac{dr}{d\lambda}=\frac{L}{r^2}\frac{dr}{d\phi}$. Then, expressing our equation in terms of u-stuff, we have that:
 
 $$
 (\frac{du}{d\phi})^2=\frac{1}{L^2}(\frac{E^2}{c^2}-L^2u^2+\frac{2GML^2}{c^2}u^3)
@@ -108,10 +124,10 @@ $$
 which implies that, after dividing by 2 and $\frac{du}{d\phi}$, that we have our really important equation that defines our photon geodesic:
 
 $$
-\frac{d^2u}{d\phi^2}=-u+\frac{3GM}{c^2}u^2
+\frac{d^2u}{d\phi^2}+u=+\frac{3GM}{c^2}u^2
 $$
 
-Since we are comparing to the Newtonian angle, I want to work in Cartesian coordinates. Thus, we can sort of bend this equation to fit.
+Let's look at this equation. The left hand side, with the power of foresight, actually describes the acceleration of particles inwards.
 
 ## Relevant Algorithms
 
