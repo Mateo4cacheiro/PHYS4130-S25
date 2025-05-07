@@ -179,8 +179,17 @@ The only major difference between the two functions that calculate the trajector
 
 $$
 k_1=\frac{d^2u}{d\phi^2}(u)
+$$
+
+$$
 k_2=\frac{d^2u}{d\phi^2}(u+\frac{\Delta\phi}{2}\frac{du}{d\phi})
+$$
+
+$$
 k_3=\frac{d^2u}{d\phi^2}(u+\frac{\Delta\phi}{2}\frac{du}{d\phi}+\frac{\Delta\phi^2}{4}k_1)
+$$
+
+$$
 k_4=\frac{d^2u}{d\phi^2}(u+\Delta\phi\frac{du}{d\phi}+\frac{\Delta\phi^2}{2}k_2)
 $$
 
@@ -188,6 +197,9 @@ The values at the incoming steps are described by:
 
 $$
 \frac{du}{d\phi}(\phi+\Delta\phi)=\frac{du}{d\phi}+\frac{\Delta\phi}{6}(k_1+2k_2+2k_3+k_4)
+$$
+
+$$
 u(\phi+\Delta\phi)=u(\phi)+\Delta\phi\frac{du}{d\phi}(\phi)+\frac{\Delta\phi^2}{6}(k_1+k_2+k_3)
 $$
 
