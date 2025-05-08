@@ -1,40 +1,54 @@
-import matplotlib.pyplot as plt
+# Project 5--FEM
+# Adam Grice
+# 06-05-2025
+
+from skfem import *
+from skfem.models.poisson import unit_load
+from skfem.helpers import dd, ddot, trace, eye
 import numpy as np
+from skfem.visuals.matplotlib import draw, plot
+import matplotlib.pyplot as plt
 
-import skfem
-from skfem.helpers import dot, grad
-import skfem.visuals.matplotlib
+m = MeshTri.init_circle(2).refined(3).with_boundaries({'outer': lambda x: np.sqrt(x[0]**2 + x[1]**2) > 0.99}) # create mesh
 
-mesh = skfem.MeshTri().refined(1)
 
-# plt.subplots(figsize=(5,5))
-# fem.visuals.matplotlib.draw(mesh, ax=plt.gca())
+basis = Basis(m, ElementTriMorley()) # create basis functions for this mesh using Morley element
 
-# plt.show()
+d = 0.001
+E = 200e9
+nu = 0.3
 
-basis_p1 = skfem.Basis(mesh, skfem.ElementTriP1())
-fe_approx = basis_p1.zeros()
 
-fe_approx[:] = 1
 
-plt.subplots(figsize = (6,5))
+def C(T):
+    return E / (1 + nu) * (T + nu / (1 - nu) * eye(trace(T), 2)) 
 
-skfem.visuals.matplotlib.plot(basis_p1, fe_approx, vmin=0, vmax=2, ax=plt.gca(), colorbar = True)
-skfem.visuals.matplotlib.draw(mesh, ax=plt.gca())
 
-plt.show()
+@BilinearForm
+def bilinf(u, v, _):
+    return d ** 3 / 12.0 * ddot(C(dd(u)), dd(v)) # This is basically the 4th order derivative term
 
-def on_left_edge(x):
-    return x[0] < 0.1
 
-dof_subset_left_edge = basis_p1.get_dofs(facets=on_left_edge)
-fe_approx[dof_subset_left_edge] = 0
+@LinearForm
+def load(v, w):
+    x, y =  w.x
+    return v * (np.sin(np.pi * y)) # and this is the load function
 
-dof_subset_top_edge = basis_p1.get_dofs(facets=lambda x: x[1] > 0.9)
-fe_approx[dof_subset_top_edge] = 3
+K = bilinf.assemble(basis)
+f = load.assemble(basis) # assemble both forms in the basis
 
-plt.subplots(figsize = (6,5))
-skfem.visuals.matplotlib.plot(basis_p1, fe_approx, vmin=0, vmax=3, ax=plt.gca(), colorbar = True, shading = 'gouraud')
-skfem.visuals.matplotlib.draw(mesh, ax=plt.gca())
+
+D = basis.get_dofs().all() # gets degrees of freedom for mesh elements
+
+x = solve(*condense(K, f, D=D)) # solves
+
+fig, ax = plt.subplots(figsize=(6, 5))  
+draw(basis.mesh, ax=ax)
+plot(basis, x, ax=ax, shading='gouraud', colorbar = True)
+
+ax.set_xlabel('x [m]')   
+ax.set_ylabel('y [m]')   
+ax.set_title('Plate Deflection')  
+ax.axis('equal')         
 
 plt.show()
